@@ -10,7 +10,7 @@ export const siteConfig: SiteConfig = {
     title: "zuige's blog",
     subTitle: "Welcome to my blog",
 
-    favicon: "/favicon/favicon.ico", // Path of the favicon, relative to the /public directory
+    favicon: "/zuige.png", // Path of the favicon, relative to the /public directory
 
     pageSize: 6, // Number of posts per page
     toc: {
@@ -36,7 +36,7 @@ export const siteConfig: SiteConfig = {
 }
 
 export const profileConfig: ProfileConfig = {
-    avatar: "assets/avatar.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+    avatar: "/zuige.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
     name: "zuige",
     description: "A blog about technology and life",
     indexPage: "https://zuige66.github.io/astro",

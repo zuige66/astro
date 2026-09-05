@@ -1,248 +1,212 @@
-﻿---
-title: Hexo + Fluid 搭建个人博客
-pubDate: 2026-09-03
+---
+title: "Building a Personal Blog with Astro and Momo"
+pubDate: 2026-09-05
 draft: false
-description: ""
+description: "A complete guide to setting up an Astro blog with the Momo template, customizing the site, and deploying it to GitHub Pages."
 image: ""
-slugId: hexo-fluid
-category: 技术
+slugId: "astro-momo"
+category: "Technology"
 pinTop: 0
 ---
 
-## 前言
+## Introduction
 
-花了几个小时搭建了这个博客，记录一下过程，也给想建博客的朋友一个参考。
+I wanted a personal blog that was simple, fast, and easy to maintain. After comparing several static-site frameworks, I chose Astro and the [Momo](https://github.com/Motues/Momo) blog template.
 
-## 为什么选 Hexo？
+Momo already provides the pages, styles, and features commonly needed by a blog, so there is no need to build an Astro project from scratch. This article records the complete setup and deployment process.
 
-对比了几种方案：
+## Why Astro?
 
-| 方案 | 优点 | 缺点 |
-|------|------|------|
-| WordPress | 功能强大、插件多 | 需要服务器、维护成本高 |
-| Hugo | 速度快 | 主题生态不如 Hexo |
-| Hexo | 主题丰富、部署简单 | 需要 Node.js 环境 |
+| Solution | Advantages | Disadvantages |
+| --- | --- | --- |
+| WordPress | Powerful and extensible | Requires a server and more maintenance |
+| Hexo | Many themes and documentation | Depends heavily on its theme ecosystem |
+| Hugo | Very fast builds | Custom themes require Go Template knowledge |
+| Astro | Fast, modern, and flexible | Requires some frontend knowledge |
 
-最终选了 Hexo，主要因为：
-- 免费托管在 GitHub Pages，不用买服务器
-- Fluid 主题颜值高、中文文档好
-- Markdown 写文章很舒服
+Astro generates fast static pages, supports Markdown and content collections, allows components from several frontend frameworks, can be deployed to GitHub Pages for free, and has a clear project structure.
 
-## 环境准备
+## Why Momo?
 
-需要安装两个东西：
+[Momo](https://github.com/Motues/Momo) is a minimalist Astro blog template. It includes dark mode, system-theme support, Pagefind search, Chinese and English localization, responsive layouts, categories, a table of contents, RSS, reading time, KaTeX, Typst, Alert and GitHub cards, optional comments, and a local CMS.
 
-**Node.js** - 去官网下载安装即可，自带 npm
+Momo is a complete Astro template rather than a theme plugin. The simplest way to use it is to clone the repository directly.
 
-```bash
-# 验证安装
-node -v    # v22.x.x
-npm -v     # 10.x.x
-```
+## Prerequisites
 
-**Git** - 用于版本管理和部署
+Install Node.js, Git, and pnpm:
 
 ```bash
-git --version  # 2.x.x
+node -v
+npm -v
+git --version
+npm install -g pnpm
+pnpm -v
 ```
 
-## 安装 Hexo
+## Download the Momo template
 
 ```bash
-# 全局安装 Hexo CLI
-npm install -g hexo-cli
-
-# 初始化博客项目
-mkdir my-blog && cd my-blog
-hexo init .
-
-# 安装依赖
-npm install
+git clone https://github.com/Motues/Momo.git
+cd Momo
+pnpm install
+pnpm dev
 ```
 
-初始化后的目录结构：
+The development server runs at `http://localhost:4321`.
 
-```
-my-blog/
-├── _config.yml    # 主配置文件
-├── package.json   # 依赖管理
-├── scaffolds/     # 文章模板
-├── source/        # 文章和资源
-│   └── _posts/    # 博客文章放这里
-└── themes/        # 主题目录
+## Project structure
+
+```text
+Momo/
+├── .github/workflows/deploy.yml # GitHub Pages deployment
+├── public/                      # Static assets and site icons
+├── src/content/blog/            # Blog articles
+├── src/i18n/                    # Localization
+├── src/pages/                   # Routes and pages
+├── src/config.ts                # Blog configuration
+├── astro.config.mjs             # Astro configuration
+└── package.json                 # Dependencies and scripts
 ```
 
-## 安装 Fluid 主题
+The three places you will edit most often are `astro.config.mjs`, `src/config.ts`, and `src/content/blog/`.
+
+## Configure the site URL
+
+Open `astro.config.mjs` and update the `site` value:
+
+```javascript
+site: 'https://your-username.github.io',
+```
+
+For example:
+
+```javascript
+site: 'https://zuige66.github.io',
+```
+
+A user site is easiest to configure when the repository is named `your-username.github.io`. For a project repository, add a base path:
+
+```javascript
+export default defineConfig({
+  site: 'https://your-username.github.io',
+  base: '/astro-blog',
+});
+```
+
+Test subpath deployments carefully because some links and assets begin with `/`.
+
+## Customize the blog information
+
+The main configuration file is `src/config.ts`. `siteConfig` controls the title, subtitle, favicon, page size, table of contents, comments, and theme settings. `profileConfig` controls the avatar, name, description, and personal homepage:
+
+```typescript
+export const profileConfig = {
+  avatar: '/images/avatar.webp',
+  name: 'Your name',
+  description: 'Notes about technology, learning, and life',
+  indexPage: 'https://your-username.github.io',
+};
+```
+
+`friendLinkConfig` defines friend links, `licenseConfig` controls the article license, and localization files are stored in `src/i18n/`.
+
+## Change the avatar and favicon
+
+Static assets belong in `public/`. The avatar and favicon can use the same image. WebP, PNG, and SVG are good choices. Use short English filenames, update the configuration path when a filename changes, and hard-refresh the browser if it caches the old favicon.
+
+## Write the first article
+
+Blog articles are stored in `src/content/blog/`. You can create one with:
 
 ```bash
-# 在博客根目录执行
-npm install hexo-theme-fluid --save
+pnpm newpost docs/hello-world.md en
 ```
 
-然后编辑根目录的 `_config.yml`，把主题改为 fluid：
-
-```yaml
-theme: fluid
-```
-
-创建主题配置文件 `_config.fluid.yml`（在根目录），基础配置：
-
-```yaml
-navbar:
-  blog_title: "我的博客"
-  menu:
-    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
-    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
-    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
-    - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
-    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-```
-
-## 写第一篇文章
-
-### 方式一：命令行创建
-
-```bash
-hexo new "文章标题"
-```
-
-会在 `source/_posts/` 下生成一个 `文章标题.md` 文件。
-
-### 方式二：直接新建文件
-
-在 `source/_posts/` 下新建 `.md` 文件，文件名就是文章的 URL。
-
-### 文章格式
+Every article needs front matter similar to this:
 
 ```markdown
 ---
-title: 文章标题
-date: 2026-09-03
-tags:
-  - 标签1
-  - 标签2
-categories:
-  - 分类
+title: "My first Astro article"
+pubDate: 2026-09-05
+draft: false
+description: "My first article with Astro and Momo."
+image: ""
+slugId: "hello-world"
+category: "Technology"
+pinTop: 0
 ---
 
-这里是正文内容，使用 Markdown 语法。
+## Introduction
+
+Write the article body here using Markdown.
 ```
 
-### Markdown 常用语法
+The `slugId` must be unique. Lowercase English words separated by hyphens are recommended.
 
-```markdown
-# 一级标题
-## 二级标题
-### 三级标题
+## Build and test locally
 
-**加粗文字**
-*斜体文字*
-~~删除线~~
-
-- 无序列表项
-1. 有序列表项
-
-[链接文字](https://example.com)
-![图片描述](图片URL)
-
-> 引用内容
-
-`行内代码`
-
-​```python
-# 代码块
-print("Hello World")
-​```
-
-| 表头1 | 表头2 |
-|-------|-------|
-| 内容1 | 内容2 |
-```
-
-## 部署到 GitHub
-
-### 1. 创建 GitHub 仓库
-
-仓库名必须是 `用户名.github.io`（个人主页）或自定义名称（项目页面）。
-
-### 2. 配置 Git SSH
+After changing the configuration or articles, run:
 
 ```bash
-# 生成密钥
-ssh-keygen -t ed25519 -C "your_email@example.com"
-
-# 复制公钥添加到 GitHub
-cat ~/.ssh/id_ed25519.pub
+pnpm build
+pnpm preview
 ```
 
-### 3. 配置部署
+The generated site is placed in `dist/`. Check the home page, articles, images, avatar, dark mode, search, mobile layout, and terminal output before deploying. Pagefind search is normally complete only after a production build.
 
-编辑 `_config.yml`：
+## Deploy to GitHub Pages
 
-```yaml
-url: https://zuige66.github.io/hexo
-deploy:
-  type: git
-  repo: git@github.com:zuige66/hexo.git
-  branch: gh-pages
-```
+Momo includes a workflow in `.github/workflows/deploy.yml`. Push the project to your repository and set the Pages source to **GitHub Actions** under **Settings → Pages → Build and deployment**.
 
-安装部署插件：
+The workflow installs dependencies, builds the site, uploads `dist/`, and publishes it to GitHub Pages. For future updates:
 
 ```bash
-npm install hexo-deployer-git --save
+pnpm build
+git add .
+git commit -m "Publish a new article"
+git push
 ```
 
-### 4. 一键部署
+Every push to the deployment branch starts a new deployment.
 
-```bash
-hexo clean && hexo deploy
+## Custom domains
+
+Create `public/CNAME` and put only the domain name in it:
+
+```text
+blog.example.com
 ```
 
-## 常用命令速查
+Then update `site` in `astro.config.mjs`, configure DNS, and set the custom domain in GitHub Pages.
 
-| 命令 | 说明 |
-|------|------|
-| `hexo new "标题"` | 新建文章 |
-| `hexo server` | 本地预览（默认 http://localhost:4000） |
-| `hexo generate` | 生成静态文件 |
-| `hexo deploy` | 部署到 GitHub |
-| `hexo clean` | 清除缓存和 public 目录 |
-| `hexo clean && hexo deploy` | 重新生成并部署（最常用） |
+## Common commands
 
-## 目录结构说明
+| Command | Description |
+| --- | --- |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Start the development server |
+| `pnpm build` | Build the production site |
+| `pnpm preview` | Preview the production build |
+| `pnpm astro ...` | Run an Astro CLI command |
+| `pnpm newpost <path> <lang>` | Create an article |
+| `pnpm cms` | Start the local CMS |
 
-```
-source/
-├── _posts/          # 博客文章
-│   ├── hello-world.md
-│   └── 我的第一篇博客.md
-├── about/           # 关于页面
-│   └── index.md
-├── categories/      # 分类页面
-│   └── index.md
-├── tags/            # 标签页面
-│   └── index.md
-└── images/          # 图片资源
-    └── zuige.jpg
-```
+## Troubleshooting
 
-## 总结
+If `pnpm` is not found, run `npm install -g pnpm` and reopen the terminal. If GitHub Actions fails, run `pnpm install` and `pnpm build` locally first, then inspect the workflow log.
 
-整个流程就是：
+If the deployed page is blank, check `site`, `base`, asset paths, and whether the repository is a user site or project site. If an update does not appear, confirm that the code was pushed, Actions completed successfully, and the browser is not showing a cached page.
 
-1. 安装 Node.js + Git
-2. 安装 Hexo CLI
-3. 初始化项目 + 安装主题
-4. 写 Markdown 文章
-5. `hexo deploy` 部署
+## Conclusion
 
-以后写新文章只需要：
+The process is simple: install Node.js, Git, and pnpm; clone Momo; install dependencies; configure the site; write articles; run a production build; and push to GitHub. GitHub Actions then deploys the static site to GitHub Pages.
 
-```bash
-hexo new "标题"
-# 编辑 md 文件
-hexo clean && hexo deploy
-```
+Astro and Momo keep hosting costs low while storing the site configuration and articles in Git, making the blog easy to back up and maintain.
 
-就这么简单，开始写博客吧！
+## References
+
+- [Momo GitHub repository](https://github.com/Motues/Momo)
+- [Momo configuration guide](https://github.com/Motues/Momo/blob/main/doc/config_zh-cn.md)
+- [Astro documentation](https://docs.astro.build/)
+- [Deploy Astro to GitHub Pages](https://docs.astro.build/en/guides/deploy/github/)
