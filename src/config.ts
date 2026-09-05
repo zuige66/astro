@@ -50,5 +50,10 @@ export const licenseConfig: LicenseConfig = {
 };
 
 export const friendLinkConfig: FriendLink[] = [
-    // Add friend links here
+    {
+        name: 'zuige',
+        avatar: 'https://zuige.cc.cd/images/avatar.jpg',
+        url: 'https://zuige.cc.cd',
+        description: 'A blog about technology and life'
+    }
 ]
