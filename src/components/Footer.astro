@@ -12,19 +12,19 @@ if (profileConfig.indexPage) {
 ---
 
 <!-- footer -->
-<footer class="flex flex-col md:flex-row md:justify-between items-start md:items-center py-10 text-[var(--text-color-70)] max-w-[var(--header-width)] mx-auto w-full">
-    <div class="mb-1 md:mb-0">
-        © {profileConfig.startYear} - {new Date().getFullYear()} <a class="link-line" target="_self" href={introPage}>{profileConfig.name}</a>. 
-    </div>
-    <div class="right">
+<footer class="flex flex-col items-center py-10 text-[var(--text-color-70)] max-w-[var(--header-width)] mx-auto w-full">
+    <div class="mb-3">
         <p>Powered by 
         <a target="_blank" href="https://astro.build" title="Astro" class="tooltip-wrapper"><Icon name="simple-icons:astro" class="inline-block" /></a> 
         <a target="_blank" href="https://svelte.dev/" title="Svelte" class="tooltip-wrapper"><Icon name="simple-icons:svelte" class="inline-block"/></a> 
         <a target="_blank" href="https://tailwindcss.com/" title="tailwindcss" class="tooltip-wrapper"><Icon name="simple-icons:tailwindcss" class="inline-block"/></a> 
         <a target="_blank" href="https://github.com/Motues/Momo" title="Momo" class="tooltip-wrapper"><Icon name="simple-icons:github" class="inline-block"/></a> 
          | 
-        <a href="/rss.xml" target="_self" title="RSS" class="tooltip-wrapper"><Icon name="simple-icons:rss" class="inline-block" /></a>
+        <a href="/astro/rss.xml" target="_self" title="RSS" class="tooltip-wrapper"><Icon name="simple-icons:rss" class="inline-block" /></a>
         </p>
+    </div>
+    <div>
+        © 2026 - 2026 <a class="link-line" target="_self" href={introPage}>{profileConfig.name}</a>. 
     </div>
 </footer>
 
