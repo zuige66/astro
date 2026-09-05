@@ -16,7 +16,7 @@ const t = i18nit(currentLang);
 // 辅助函数：根据文章 id 和当前语言生成正确的 URL
 function getPostUrl(id: string) {
   const isDefault = currentLang === i18n?.defaultLocale;
-  return isDefault ? `/blog/${id}` : `/${currentLang}/blog/${id}`;
+  return isDefault ? `${import.meta.env.BASE_URL}blog/${id}` : `${import.meta.env.BASE_URL}${currentLang}/blog/${id}`;
 }
 ---
 

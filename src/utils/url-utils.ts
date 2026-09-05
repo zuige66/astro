@@ -42,9 +42,9 @@ export function blogCoverUrl(contentPath: string, blogName: string): string {
 export function getRelativeLocaleUrl(lang: string, path: string) : string { 
     const prefixDefaultLocale = i18n.routing.prefixDefaultLocale;
     if(prefixDefaultLocale) {
-        return joinUrl("/", lang, path);
+        return joinUrl(import.meta.env.BASE_URL, lang, path);
     }else {
-        if(lang === i18n.defaultLocale) return joinUrl("/", path);
-        return joinUrl("/", lang, path);
+        if(lang === i18n.defaultLocale) return joinUrl(import.meta.env.BASE_URL, path);
+        return joinUrl(import.meta.env.BASE_URL, lang, path);
     }
 }
