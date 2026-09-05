@@ -1,133 +1,134 @@
----
+﻿---
 title: Markdown
 pubDate: 2025-09-21
-description: Testing basic Markdown functionality
+description: 测试Markdown的基本功能
 image: "./cover.jpg"
 draft: false
 slugId: momo/markdown
 ---
 
-## Headings
 
-Typically, use 1-6 hash symbols `#` to denote headings, for example:
+## 标题
+
+一般来使用1-6个井号`#`来表示标题，例如：
 
 ```markdown
-# This is a Level 1 heading
+# 这是一级标题
 
-## This is a Level 2 heading
+## 这是二级标题
 
-### This is a Level 3 heading
+### 这是三级标题
 
-#### This is a Level 4 heading
+#### 这是四级标题
 
-#### This is a Level 5 heading
+#### 这是五级标题
 ```
 
-Displayed as:
-![heading](./heading_en.png)
+显示如下：
+![heading](./heading_zh.png)
 
-## Paragraphs
+## 段落
 
-### Paragraph
+### 段落
 
-Separate paragraphs with blank lines. Do not use spaces or indentation before paragraphs.
+段落之间用空行开，段落前不使用空格或者缩进。
 
 ```markdown
-This is the first paragraph
+这是第一段
 
-This is the second paragraph
+这是第二段
 ```
 
-### Line Breaks
+### 换行
 
-Add two or more spaces at the end of a line to force a line break.
+在行尾添加两个及以上的空格表示换行。
 
 ```markdown
-This is the first line  
-This is the second line
+这是第一行  
+这是第二行
 ```
 
-## Emphasis
+## 着重
 
-### Bold
+### 粗体
 
-Enclose words or phrases with two asterisks `**` or underscores `__` to make them bold.
+在单词或短语的前后添加两个星号`**`或下划线`__`表示加粗。
 
 ```markdown
-I like **listening to music**, **traveling**...
+我喜欢**听歌**、**旅游**......
 ```
 
-Displays as:  
-I like **listening to music**, **traveling**...
+显示如下:  
+我喜欢**听歌**、**旅游**......
 
-### Italics
+### 斜体
 
-Enclose words or phrases with one asterisk `*` or underscore `_` for italics.
+在单词或短语的前后添加一个星号`*`或下划线`_`表示斜体。
 
 ```markdown
-I like *listening to music*, _traveling_...
+我喜欢*听歌*、_旅游_......
 ```
 
-Displays as:  
-I like *listening to music*, _traveling_...
+显示如下:  
+我喜欢*听歌*、_旅游_......
 
-### Bold and Italic
+### 粗体和斜体
 
-Enclose words or phrases with three asterisks `***` or three underscores `___` to apply both bold and italic formatting.
+在单词或短语的前后添加三个星号`***`**或**下划线`___`表示同时为粗体和斜体。
 
 ```markdown
-I love **_listening to music_**, **_traveling_**...
+我喜欢**_听歌_**、**_旅游_**......
 ```
 
-Displayed as:  
-I love **_listening to music_**, **_traveling_**...
+显示如下:  
+我喜欢**_听歌_**、**_旅游_**......
 
-## Block Quotes
+## 块引用
 
-### Block Quotes
+### 块引用
 
-Precede words or phrases with a right arrow `>` to create block quotes, ensuring they are separated by spaces.
+将单词或短语用右箭头`>`开头表示为块引用，需要用空格隔开。
 
 ```markdown
-> What you dwell on will echo back!
+> 念念不忘，必有回响！
 ```
 
-Displays as:
+显示如下:
 
-> What you dwell on will echo back!
+> 念念不忘，必有回响！
 
-### Nested Block Quotes
+### 嵌套块引用
 
-Precede paragraphs with double right arrows `>>` to create nested quotes.
+在段落前面添加一个双右箭头`>>`表示嵌套引用。
 
 ```markdown
-> What you dwell on
+> 念念不忘
 >
-> > will resonate
+> > 必有回响
 ```
 
-Displays as:
+显示如下:
 
-> What you dwell on
+> 念念不忘
 >
-> > will resonate
+> > 必有回响
 
-## Code
+## 代码
 
-### Code
+### 代码
 
-Enclose words or phrases with backticks ` to denote code.
+将单词或者短语用勾号\`括起来表示为代码。
 
 ```
-In C++, use `cout` to print Hello World!
+在C++中，使用`cout`打印Hello World!
 ```
 
-Displays as:  
-In C++, use `cout` to print Hello World!
+显示如下  
+在C++中，使用`cout`打印Hello World!
 
-### Code Blocks
+### 代码块
 
-Enclose code blocks with three backticks (``) or three tilde symbols (~~~) on both sides, and specify the language type after the first line for syntax highlighting.
+代码块之前和之后的行上使用三个刻度线（```）或三个波浪号（~~~），并在第一行后面加入语言类型实现语法高亮。
 
 ````
 ```c++
@@ -135,181 +136,181 @@ Enclose code blocks with three backticks (``) or three tilde symbols (~~~) on bo
 using namespace std;
 
 int main() {
-  cout<<“Hello World!”<<endl;
+  cout<<"Hello World!"<<endl;
   return 0;
 }
 ```
 ````
 
-Result as shown below
+结果如下所示
 
 ```cpp
 #include <iostream>
 using namespace std;
 
 int main() {
-  cout<<“Hello World!”<<endl;
+  cout<<"Hello World!"<<endl;
   return 0;
 }
 ```
 
-## Lists
+## 列表
 
-### Ordered Lists
+### 有序列表
 
-Precede paragraphs with a number followed by a period `.` to create an ordered list. Numbers don't need to be sequential, but the list will display with numbers at the beginning.
+在段落前中添加数字和句点`.`表示有序列表。数字不必按数字顺序排列，但列表以数字开头显示。
 
 ```markdown
-1. First item
-1. Second item
-1. Third item
+1. 第一项
+1. 第二项
+1. 第三项
 ```
 
-Displayed as:
+显示如下:
 
-1. First item
-2. Second item
-3. Third item
+1. 第一项
+2. 第二项
+3. 第三项
 
-### Unordered Lists
+### 无序列表
 
-Precede a paragraph with an asterisk `*`, hyphen `-`, or period `.` to create an unordered list.
+在段落前添加一个星号`*`或减号`-`或圆点`.`表示无序列表。
 
 ```markdown
-- First item
+- 第一项
 
-* Second item
-  . Third item
+* 第二项
+  . 第三项
 ```
 
-Displays as:
+显示如下:
 
-- First item
-- Second item
-- Third item
+- 第一项
+- 第二项
+- 第三项
 
-### Nesting List Items
+### 在列表中添加元素
 
-To nest another element (paragraph, blockquote, etc.) within a list item, indent it by four spaces or one tab.
+在列表中添加另一个元素（段落、块引用等），需要把该元素缩进四个空格或一个制表符。
 
 ```markdown
-1. First item
-   > Early to bed, early to rise
-2. Second item
+1. 第一项
+   > 早睡早起
+2. 第二项
 ```
 
-Displays as:
+显示如下:
 
-1. First item
-   > Early to bed, early to rise
-2. Second item
+1. 第一项
+   > 早睡早起
+2. 第二项
 
-## Links
+## 链接
 
-### Linking
+### 链接
 
-Enclose text in square brackets (e.g., [Motues]), then add the URL in parentheses to create a link.
+将文本括在方括号（例如[Motues]）中，然后在后面的括号加入URL表示链接。
 
 ```markdown
-Welcome to Motues' [Blog](https://motues.top)!
+欢迎访问Motues的[Blog](https://motues.top)！
 ```
 
-Displays as:  
-Welcome to Motues' [Blog](https://motues.top)!
+显示如下:  
+欢迎访问Motues的[Blog](https://motues.top)！
 
-### Link Titles
+### 链接标题
 
-Add a title in the brackets after the URL. This will display as a tooltip when users hover over the link.
+在URL后面的括号中添加标题，当用户将鼠标悬停在链接上时，这将显示提示。
 
 ```markdown
-Welcome to Motues' [Blog](https://motues.top “Motues' Blog”)!
+欢迎访问Motues的[Blog](https://motues.top "Motues's Blog")！
 ```
 
-Displayed as:  
-Welcome to Motues' [Blog](https://motues.top “Motues' Blog”)!
+显示如下:  
+欢迎访问Motues的[Blog](https://motues.top "Motues's Blog")！
 
-## Images
+## 图片
 
-Start with an exclamation mark (!), then add alternative text in parentheses. Include the image resource path or URL within the parentheses. Optionally, add a title after the URL in the parentheses.The title will be displayed below the image.
+先感叹号（!），然后在括号中添加替代文本，并在括号中添加图像资源的路径或URL，也可以选择在括号中的URL之后添加标题，标题会显示在图片下方。
 
 ```markdown
-![Motues](./Motues.png "This is my avatar")
+![Motues](./Motues.png "这是我的头像")
 ```
 
-Displayed as:  
-![Motues](./Motues.png "This is my avatar")
-<!-- <img src="./Motues.png" alt="Motues" title="This is my avatar" width="256" height="256"> -->
+显示如下:  
+![Motues](./Motues.png "这是我的头像")
+<!-- <img src="./Motues.png" alt="Motues" title="这是我的头像" width="256" height="256"> -->
 
-## Tables
+## 表格
 
-### Table
+### 表格
 
-To add a table, use three or more hyphens (`---`) to create each column header, and separate columns with vertical bars (`|`) (rows and columns do not need to be aligned).
+要添加表，请使用三个或多个连字符（`---`）创建每列的标题，并使用竖线（`|`）分隔每列（每行每列不需要对齐）。
 
 ```markdown
-| Fruit      | Color    | Taste      |
+| 水果   | 颜色 | 口感 |
 | ------ | ---- | ---- |
-| Watermelon🍉 | Green | Sweet  |
-| Grapes🍇 | Purple | Tart  |
+| 西瓜🍉 | 绿色 | 甜   |
+| 葡萄🍇 | 紫色 | 酸   |
 ```
 
-Displayed as:
-| Fruit      | Color      | Taste      |
+显示如下:
+| 水果 | 颜色 | 口感 |
 | ---------- | ---------| ----|
-| Watermelon🍉 | Green | Sweet |
-| Grapes🍇 | Purple | Tart |
+| 西瓜🍉 | 绿色 | 甜 |
+| 葡萄🍇 | 紫色 | 酸 |
 
-### Alignment
+### 对齐
 
-You can align text within a column to the left, right, or center by adding a colon `:` to the left, right, or both sides of the hyphen in the header row.
+可以通过在标题行内的连字符的左侧，右侧或两侧添加一个冒号`:`，以使列中的文本左，右或居中对齐。
 
 ```markdown
-| Fruit   | Color | Taste |
+| 水果   | 颜色 | 口感 |
 | :----- | :--: | ---: |
-| Watermelon🍉 | Green | Sweet |
-| Grapes🍇 | Purple | Tart |
+| 西瓜🍉 | 绿色 |   甜 |
+| 葡萄🍇 | 紫色 |   酸 |
 ```
 
-Displayed as:
-| Fruit | Color | Taste |
+显示如下:
+| 水果 | 颜色 | 口感 |
 | :------ | :-----:| ----:|
-| Watermelon🍉 | Green | Sweet |
-| Grapes🍇 | Purple | Tart |
+| 西瓜🍉 | 绿色 | 甜 |
+| 葡萄🍇 | 紫色 | 酸 |
 
-### Escape Characters
+### 转义字符
 
-Use the HTML character code `&#124;` to display the vertical bar `|` character in tables.
+使用表格的HTML字符代码`&#124;`在表中显示竖线`|`字符
 
-## Task Lists
+## 任务清单
 
-Precede each task item with a hyphen `-` and square brackets `[]`, inserting a space between them. To mark a task as completed, add an `x` inside the brackets.
-
-```markdown
-- [x] Eat
-- [ ] Sleep
-- [ ] Play Beans
-```
-
-- [x] Eat
-- [ ] Sleep
-- [ ] Play Beans
-
-## Other Features
-
-### Strikethrough
-
-Enclose words or phrases with two tildes `~~` to create a strikethrough.
+任务列表项前需要添加破折号`-`和方括号`[]`，并在之间插入一个空格。如果要选择一个复选框，需要在方括号之间添加`x`。
 
 ```markdown
-I don't like eating ~~grapes~~
+- [x] 吃饭
+- [ ] 睡觉
+- [ ] 打豆豆
 ```
 
-Displays as:  
-I don't like eating ~~grapes~~
+- [x] 吃饭
+- [ ] 睡觉
+- [ ] 打豆豆
 
-### Horizontal Lines
+## 其他
 
-Use three or more asterisks (`***`), hyphens (`---`), or underscores (`___`) on a line to create a horizontal line.
+### 删除线
+
+在单词或短语的前后添加两个波浪线`~~`表示删除线。
+
+```markdown
+我不喜欢吃~~葡萄~~
+```
+
+显示如下:  
+我不喜欢吃~~葡萄~~
+
+### 水平线
+
+在一行上使用三个或更多的星号（`***`），减号（`---`）或下划线（`___`）创建水平线。
 
 ```markdown
 ---
@@ -318,13 +319,10 @@ Use three or more asterisks (`***`), hyphens (`---`), or underscores (`___`) on 
 ---
 ```
 
-Displays as:
+显示如下:
 
 ---
 
 ---
 
 ---
-
-
-Translated with DeepL.com (free version)
