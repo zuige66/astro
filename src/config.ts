@@ -10,7 +10,7 @@ export const siteConfig: SiteConfig = {
     title: "zuige's blog",
     subTitle: "Welcome to my blog",
 
-    favicon: "/zuige.png", // Path of the favicon, relative to the /public directory
+    favicon: "zuige.png", // Path of the favicon, relative to the /public directory
 
     pageSize: 6, // Number of posts per page
     toc: {

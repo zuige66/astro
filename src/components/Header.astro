@@ -58,6 +58,7 @@ if (profileConfig.indexPage) {
     <!-- logo -->
     <div class="pr-4 py-2 z-30 header-logo">
         <a href={ indexPage } >
+            <img src={baseUrl(profileConfig.avatar)} alt={profileConfig.name} class="inline-block w-9 h-9 mr-2 rounded-full object-cover align-middle" />
             <span class="text-3xl font-bold hover:opacity-60 transition-opacity">{ siteConfig.title }</span>
         </a>
     </div>
