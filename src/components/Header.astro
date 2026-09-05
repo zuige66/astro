@@ -25,17 +25,13 @@ const getLocalePath = (path: string, targetLocale: string) => {
   const defaultLocale = i18n?.defaultLocale || "zh-cn";
   
   // 移除当前语言前缀
-  let basePath = currentPath;
+  let basePath = currentPath.replace(import.meta.env.BASE_URL, "/");
   if (currentLang && currentLang !== defaultLocale) {
     basePath = currentPath.replace(`/${currentLang}`, "") || "/";
   }
   
-  // 添加目标语言前缀（默认语言不需要前缀）
-  if (targetLocale && targetLocale !== defaultLocale) {
-    return `/${targetLocale}${basePath}`;
-  }
-  
-  return basePath;
+  // 通过统一 URL 工具添加 base 和目标语言前缀
+  return getRelativeLocaleUrl(targetLocale, basePath);
 };
 
 const indexPage = getRelativeLocaleUrl(currentLang, "/");
