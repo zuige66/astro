@@ -1,4 +1,0 @@
-
-### Friends
-
-No friends yet.
