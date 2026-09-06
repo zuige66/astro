@@ -9,6 +9,7 @@ import { getSpec } from '@utils/content-utils'
 import i18nit from '@i18n/translation';
 import { getEntry, render } from 'astro:content'
 import { i18n } from "astro:config/client";
+import { baseUrl } from '@utils/url-utils';
 
 export async function getStaticPaths() {
 	return i18n?.locales.map(locale => ({ params: { locale: locale == i18n?.defaultLocale ? undefined : (locale as string) } }));
@@ -41,7 +42,7 @@ const pageTitle = t("header.friends") + " - " + siteConfig.title;
                     >
                         <div class="flex items-center min-w-0">
                             <img 
-                                src={friend.avatar} 
+                                src={baseUrl(friend.avatar)} 
                                 alt={friend.name} 
                                 class="w-16 h-16 rounded-full object-cover mr-4 flex-shrink-0"
                                 onerror="this.src='https://www.gravatar.com/avatar/?d=mp'"
