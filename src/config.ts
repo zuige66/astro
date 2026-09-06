@@ -21,9 +21,9 @@ export const siteConfig: SiteConfig = {
         enable: true // Whether to enable blog navigation in the blog footer
     },
     comments: {
-        enable: false, // Whether to enable comments
+        enable: true, // Whether to enable comments
         platform: "default",
-        backendUrl: ""
+        backendUrl: "https://api-momo.motues.top"
     },
     theme: {
         AOS: true, // Whether to enable AOS (Animate On Scroll) for animations

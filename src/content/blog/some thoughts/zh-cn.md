@@ -5,7 +5,7 @@ draft: false
 description: ""
 image: ""
 slugId: some thoughts
-category: ""
+category: "杂记"
 pinTop: 0
 ---
 
