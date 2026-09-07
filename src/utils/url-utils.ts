@@ -40,11 +40,13 @@ export function blogCoverUrl(contentPath: string, blogName: string): string {
 }
 
 export function getRelativeLocaleUrl(lang: string, path: string) : string { 
-    const prefixDefaultLocale = i18n.routing.prefixDefaultLocale;
+    const prefixDefaultLocale = typeof i18n?.routing === 'object'
+        ? i18n.routing.prefixDefaultLocale
+        : false;
     if(prefixDefaultLocale) {
         return joinUrl(import.meta.env.BASE_URL, lang, path);
     }else {
-        if(lang === i18n.defaultLocale) return joinUrl(import.meta.env.BASE_URL, path);
+        if(lang === (i18n?.defaultLocale ?? 'zh-cn')) return joinUrl(import.meta.env.BASE_URL, path);
         return joinUrl(import.meta.env.BASE_URL, lang, path);
     }
 }

@@ -4,7 +4,7 @@ import { siteConfig, profileConfig } from '../config';
 import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
-    const blog = await getBlogEntrySort();
+    const blog = await getBlogEntrySort('zh-cn');
     return rss({
         title: `${siteConfig.title} - ${siteConfig.subTitle}`,
         description: profileConfig.description,

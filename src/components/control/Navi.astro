@@ -2,8 +2,10 @@
 import { i18n } from "astro:config/client";
 import i18nit from '@i18n/translation'
 import { getRelativeLocaleUrl } from '@utils/url-utils';
+import { siteConfig } from '@/config';
 
 const { page } = Astro.props;
+const { pageSize = 5, sizePath = '' } = Astro.props;
 
 const currentPage = page.currentPage;
 const totalPages = page.lastPage;
@@ -41,7 +43,20 @@ function getVisiblePages(current: number, total: number) {
 const visiblePages = getVisiblePages(currentPage, totalPages);
 
 const getPageUrl = (p: number) => {
-  return p === 1 ? '/' : `/${p}/`;
+  const pagePart = p === 1 ? '' : `${p}/`;
+  return sizePath ? `/${sizePath}/${pagePart}` : (p === 1 ? '/' : `/${p}/`);
+};
+
+const sizeOptions = [
+  { value: '5', label: '5' },
+  { value: '10', label: '10' },
+  { value: '25', label: '25' },
+  { value: '50', label: '50' },
+  { value: 'all', label: currentLang === 'en' ? 'All' : '全部' },
+];
+const sizeUrl = (value: string) => {
+  if (value === String(siteConfig.pageSize)) return getRelativeLocaleUrl(currentLang, '/');
+  return getRelativeLocaleUrl(currentLang, `/size/${value}/`);
 };
 
 const currentLang = Astro.currentLocale || i18n!.defaultLocale;
@@ -53,12 +68,24 @@ const btnActiveProps = "text-[var(--text-color)] hover:bg-[var(--button-hover-co
 const btnDisabledProps = "text-[var(--text-color-30)] border-[var(--button-border-color)] opacity-40 cursor-not-allowed pointer-events-none";
 ---
 
-<nav data-aos="fade-up" class="flex flex-row justify-between items-center gap-1 my-8 max-w-[var(--page-width)] mx-auto text-sm">
+<nav data-aos="fade-up" class="flex flex-col gap-4 my-8 max-w-[var(--page-width)] mx-auto text-sm">
+  <div class="flex items-center justify-end gap-2 text-[var(--text-color-70)]">
+    <label for="page-size">{currentLang === 'en' ? 'Posts per page' : '每页文章数'}</label>
+    <select id="page-size" class="rounded-lg border border-[var(--button-border-color)] bg-transparent px-3 py-2 text-[var(--text-color)]">
+      {sizeOptions.map((option) => (
+        <option value={sizeUrl(option.value)} selected={sizePath === 'size/all' ? option.value === 'all' : pageSize === Number(option.value)}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  <div class="flex flex-row justify-between items-center gap-1">
   
   <a 
     href={showPrevious ? getRelativeLocaleUrl(currentLang, getPageUrl(currentPage - 1)) : "#"} 
     class={`${btnBaseClass} ${showPrevious ? btnActiveProps : btnDisabledProps}`}
-    aria-label="Previous Page"
+    aria-label={t("pageNavigation.previous")}
   >
     <svg class="w-5 h-5 md:mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -99,14 +126,22 @@ const btnDisabledProps = "text-[var(--text-color-30)] border-[var(--button-borde
   <a 
     href={showNext ? getRelativeLocaleUrl(currentLang, getPageUrl(currentPage + 1)) : "#"} 
     class={`${btnBaseClass} ${showNext ? btnActiveProps : btnDisabledProps}`}
-    aria-label="Next Page"
+    aria-label={t("pageNavigation.next")}
   >
     <span class="hidden md:inline">{t("pageNavigation.next")}</span>
     <svg class="w-5 h-5 md:ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
     </svg>
   </a>
+  </div>
 </nav>
+
+<script>
+  const pageSizeSelect = document.querySelector<HTMLSelectElement>('#page-size');
+  pageSizeSelect?.addEventListener('change', () => {
+    if (pageSizeSelect.value) window.location.href = pageSizeSelect.value;
+  });
+</script>
 
 <style>
   /* 隐藏滚动条，确保在极端窄屏下也能滑动页码 */

@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 
     favicon: "zuige.png", // Path of the favicon, relative to the /public directory
 
-    pageSize: 6, // Number of posts per page
+    pageSize: 5, // Number of posts per page
     toc: {
         enable: true,
         depth: 3 // Max depth of the table of contents, between 1 and 4

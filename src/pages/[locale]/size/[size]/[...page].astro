@@ -1,0 +1,47 @@
+---
+import MainPageLayout from '@layouts/MainPageLayout.astro';
+import Cover from '@components/Cover.astro';
+import PostPage from '@components/PostPage.astro';
+import Navi from '@components/control/Navi.astro';
+import FabMenu from '@components/control/FabMenu.astro';
+import { getBlogEntrySort } from '@utils/content-utils';
+import { siteConfig } from '@/config';
+import { i18n } from 'astro:config/client';
+import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import i18nit from '@i18n/translation';
+
+const { page } = Astro.props;
+const currentLang = Astro.currentLocale || Astro.params.locale || i18n.defaultLocale;
+const t = i18nit(currentLang);
+const size = Astro.params.size!;
+const sizePath = `size/${size}`;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const paths = [];
+  for (const locale of i18n.locales) {
+    const localeCode = typeof locale === 'string' ? locale : locale.path;
+    if (localeCode === i18n.defaultLocale) continue;
+    for (const size of ['5', '10', '25', '50', 'all']) {
+      const entries = await getBlogEntrySort(localeCode, undefined, (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => {
+        const pinA = a.data.pinTop ?? 0;
+        const pinB = b.data.pinTop ?? 0;
+        if (pinA !== pinB) return pinB - pinA;
+        return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+      });
+      const pageSize = size === 'all' ? Math.max(entries.length, 1) : Number(size);
+      paths.push(...paginate(entries, { pageSize, params: { locale: localeCode, size } }));
+    }
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+const pageTitle = `${t('cover.title.home')} - ${siteConfig.title}`;
+---
+
+<MainPageLayout title={pageTitle} lang={currentLang}>
+  <Cover title={t('cover.title.home')} subTitle={t('cover.subTitle.home')} />
+  <PostPage page={page} />
+  <Navi page={page} pageSize={size === 'all' ? page.data.length : Number(size)} sizePath={sizePath} />
+  <FabMenu showBackBottom={true} />
+</MainPageLayout>

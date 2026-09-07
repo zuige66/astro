@@ -29,10 +29,10 @@ const tocHeadings = headings.filter(h => h.depth > 1 && h.depth < 5);
 
 <div 
   id="fabMenu" 
-  class="fixed bottom-[5vh] lg:bottom-[13.5vh] right-[7vw] lg:left-[var(--toc-offset-left)] w-10 h-10 z-[1000] transition-opacity duration-300 opacity-0 pointer-events-none"
+  class="fixed bottom-[5vh] lg:bottom-[13.5vh] right-[7vw] lg:left-[var(--toc-offset-left)] w-10 h-auto z-[1000] transition-opacity duration-300 opacity-0 pointer-events-none"
   data-scroll-distance={scrollToTopDistance}
 >
-  <div id="menuItems" class="absolute bottom-full left-0 mb-3 flex flex-col items-center gap-3 transition-all duration-300 ease-out translate-y-10 opacity-0 pointer-events-none [.is-active_&]:translate-y-0 [.is-active_&]:opacity-100 [.is-active_&]:pointer-events-auto">
+  <div id="menuItems" class="flex flex-col items-center gap-3">
     
     {showBackTop && (
       <button id="backTop" title={t("button.backToTop")} class="relative w-10 h-10 rounded-full border border-[var(--text-color)]/20 cursor-pointer flex items-center justify-center transition-transform duration-200 active:scale-90 shadow-none backdrop-blur bg-[var(--bg-color)]/20 hover:bg-[var(--button-hover-color)]">
@@ -70,11 +70,6 @@ const tocHeadings = headings.filter(h => h.depth > 1 && h.depth < 5);
     )}
   </div>
 
-  <button id="menuTrigger" title={t("button.meun")} class="w-full h-full rounded-full border border-[var(--text-color)]/20 cursor-pointer flex items-center justify-center transition-all duration-300 shadow-none backdrop-blur bg-[var(--bg-color)]/20 active:scale-95 hover:bg-[var(--button-hover-color)]">
-    <Icon name="fa6-solid:ellipsis" class="absolute text-lg text-[var(--text-color)] transition-all duration-300 opacity-100 rotate-0 [.is-active_&]:opacity-0 [.is-active_&]:rotate-90" />
-    <Icon name="fa6-solid:xmark" class="absolute text-lg text-[var(--text-color)] transition-all duration-300 opacity-0 -rotate-90 [.is-active_&]:opacity-100 [.is-active_&]:rotate-0" />
-  </button>
-
   {tocHeadings.length > 0 && (
     <div 
       id="tocPanel" 
@@ -108,7 +103,6 @@ const tocHeadings = headings.filter(h => h.depth > 1 && h.depth < 5);
 <script is:inline>
 function initFabMenu() {
   const container = document.getElementById('fabMenu');
-  const trigger = document.getElementById('menuTrigger');
   const backTop = document.getElementById('backTop');
   const backBottom = document.getElementById('backBottom');
   const backComment = document.getElementById('backComment');
@@ -117,7 +111,7 @@ function initFabMenu() {
   const closeToc = document.getElementById('closeToc');
   const tocLinks = document.querySelectorAll('.toc-link');
   
-  if (!container || !trigger) return;
+  if (!container) return;
 
   const threshold = parseInt(container.dataset.scrollDistance) || 100;
   let isTocOpen = false;
@@ -133,7 +127,7 @@ function initFabMenu() {
       container.classList.add('opacity-100', 'pointer-events-auto');
     } else {
       container.classList.add('opacity-0', 'pointer-events-none');
-      container.classList.remove('opacity-100', 'pointer-events-auto', 'is-active', 'toc-active');
+      container.classList.remove('opacity-100', 'pointer-events-auto', 'toc-active');
       isTocOpen = false; // 回到顶部时同时关闭目录状态
     }
 
@@ -149,17 +143,6 @@ function initFabMenu() {
       const circumference = 2 * Math.PI * 20;
       const offset = circumference - (scrollPercent / 100) * circumference;
       progressCircle.style.strokeDasharray = `${circumference - offset} ${offset}`;
-    }
-  };
-
-  // 主按钮切换
-  trigger.onclick = (e) => {
-    e.stopPropagation();
-    container.classList.toggle('is-active');
-    // 如果关闭了主菜单，也一并关闭目录
-    if (!container.classList.contains('is-active')) {
-      isTocOpen = false;
-      container.classList.remove('toc-active');
     }
   };
 
@@ -253,7 +236,7 @@ tocLinks.forEach(link => {
   if (backTop) {
     backTop.onclick = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      container.classList.remove('is-active', 'toc-active');
+      container.classList.remove('toc-active');
       isTocOpen = false;
     };
   }
@@ -262,7 +245,7 @@ tocLinks.forEach(link => {
   if (backBottom) {
     backBottom.onclick = () => {
       window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-      container.classList.remove('is-active', 'toc-active');
+      container.classList.remove('toc-active');
       isTocOpen = false;
     };
   }
@@ -272,7 +255,7 @@ tocLinks.forEach(link => {
     backComment.onclick = () => {
       const comments = document.getElementById('comments');
       comments.scrollIntoView({ behavior: 'smooth' });
-      container.classList.remove('is-active', 'toc-active');
+      container.classList.remove('toc-active');
       isTocOpen = false;
     };
   }
@@ -280,7 +263,7 @@ tocLinks.forEach(link => {
   // 点击外部关闭所有展开项
   document.addEventListener('click', (e) => {
     if (!container.contains(e.target)) {
-      container.classList.remove('is-active', 'toc-active');
+      container.classList.remove('toc-active');
       isTocOpen = false;
     }
   });

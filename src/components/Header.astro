@@ -65,7 +65,7 @@ if (profileConfig.indexPage) {
     <!-- tools -->
     <div class="ml-auto flex gap-2 pl-4 py-2 justify-end z-30">
         <!-- Search -->
-        <button id="search-button" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] active:scale-90 rounded-lg hover:text-current border border-[var(--button-border-color)] transition-all duration-300" aria-label="Search">
+        <button id="search-button" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] active:scale-90 rounded-lg hover:text-current border border-[var(--button-border-color)] transition-all duration-300" aria-label={t("button.search")}>
             <Icon name="fa6-solid:magnifying-glass" class="w-4 h-4" />
         </button>
         <!-- Dark Mode -->
@@ -76,7 +76,7 @@ if (profileConfig.indexPage) {
         </a> -->
         <!-- Language Switcher -->
         {showLanguageSwitcher && <div class="relative">
-            <button id="language-button" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] active:scale-90 rounded-lg hover:text-current border border-[var(--button-border-color)] transition-all duration-300" aria-label="Language Switcher">
+            <button id="language-button" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] active:scale-90 rounded-lg hover:text-current border border-[var(--button-border-color)] transition-all duration-300" aria-label={t("button.language")}>
                 <Icon name="fa6-solid:globe" class="w-4 h-4" />
             </button>
             
@@ -97,7 +97,7 @@ if (profileConfig.indexPage) {
         </div>}
         <div class="relative md:hidden">
           <!-- Mobile Menu -->
-          <button id="mobile-menu-button" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] active:scale-90 rounded-lg hover:text-current border border-[var(--button-border-color)] transition-all duration-300" aria-label="Mobile Menu">
+          <button id="mobile-menu-button" class="flex items-center justify-center w-10 h-10 hover:bg-[var(--button-hover-color)] active:scale-90 rounded-lg hover:text-current border border-[var(--button-border-color)] transition-all duration-300" aria-label={t("button.mobileMenu")}>
               <Icon name="fa6-solid:align-justify" class="w-5 h-5" />
           </button>
               

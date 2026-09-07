@@ -13,24 +13,25 @@ const t = i18nit(currentLang);
 const translations = {
   placeholder: t("search.placeholder"),
   error: t("search.error"),
-  noresult: t("search.noresult")
+  noresult: t("search.noresult"),
+  unavailable: t("search.unavailable")
 };
 
 const fakeResult: SearchResult[] = [
 	{
 		url: baseUrl("/"),
 		meta: {
-			title: "This Is a Fake Search Result",
+			title: t("search.devTitle"),
 		},
 		excerpt:
-			"Because the search cannot work in the <mark>dev</mark> environment.",
+			t("search.devDescription"),
 	},
 	{
 		url: baseUrl("/"),
 		meta: {
-			title: "If You Want to Test the Search",
+			title: t("search.devPreviewTitle"),
 		},
-		excerpt: "Try running <mark>pnpm build && pnpm preview</mark> instead.",
+		excerpt: t("search.devPreviewDescription"),
   }
 ]
 ---
@@ -50,7 +51,7 @@ const fakeResult: SearchResult[] = [
           class="w-full bg-transparent border-0 focus:ring-0 focus:outline-none  text-[var(--text-color)]"
           autofocus
         />
-        <button id="close-search" class="ml-2 p-2 text-[var(--text-color-70)] rounded-lg hover:bg-[var(--button-hover-color)] active:bg-[var(--button-hover-color)]" aria-label="Close Search">
+        <button id="close-search" class="ml-2 p-2 text-[var(--text-color-70)] rounded-lg hover:bg-[var(--button-hover-color)] active:bg-[var(--button-hover-color)]" aria-label={t("button.close")}>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
@@ -231,7 +232,7 @@ async function performSearch(query) {
     console.log('Pagefind is not available');
     searchResults.innerHTML = `
       <div class="p-8 text-center text-[var(--text-color-70)]">
-        <p>搜索功能暂时不可用</p>
+        <p>${translations.unavailable}</p>
       </div>
     `;
   }

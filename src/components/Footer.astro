@@ -1,6 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
 import { profileConfig } from "../config";
+import { i18n } from "astro:config/client";
+import i18nit from "@i18n/translation";
+import { baseUrl } from "@utils/url-utils";
 
 let introPage : string;
 
@@ -9,21 +12,24 @@ if (profileConfig.indexPage) {
 } else {
     introPage = import.meta.env.BASE_URL;
 }
+
+const currentLang = Astro.currentLocale || i18n!.defaultLocale;
+const t = i18nit(currentLang);
 ---
 
 <!-- footer -->
-<footer class="flex flex-col items-center py-10 text-[var(--text-color-70)] max-w-[var(--header-width)] mx-auto w-full">
-    <div class="mb-3">
-        <p>Powered by 
+<footer class="flex flex-row items-center justify-between gap-4 px-4 py-10 text-[var(--text-color-70)] max-w-[var(--header-width)] mx-auto w-full text-sm md:text-base">
+    <div class="flex items-center min-w-0">
+        <p>{t("footer.poweredBy")}
         <a target="_blank" href="https://astro.build" title="Astro" class="tooltip-wrapper"><Icon name="simple-icons:astro" class="inline-block" /></a> 
         <a target="_blank" href="https://svelte.dev/" title="Svelte" class="tooltip-wrapper"><Icon name="simple-icons:svelte" class="inline-block"/></a> 
         <a target="_blank" href="https://tailwindcss.com/" title="tailwindcss" class="tooltip-wrapper"><Icon name="simple-icons:tailwindcss" class="inline-block"/></a> 
         <a target="_blank" href="https://github.com/Motues/Momo" title="Momo" class="tooltip-wrapper"><Icon name="simple-icons:github" class="inline-block"/></a> 
          | 
-        <a href="/astro/rss.xml" target="_self" title="RSS" class="tooltip-wrapper"><Icon name="simple-icons:rss" class="inline-block" /></a>
+        <a href={baseUrl("rss.xml")} target="_self" title={t("footer.rss")} class="tooltip-wrapper"><Icon name="simple-icons:rss" class="inline-block" /></a>
         </p>
     </div>
-    <div>
+    <div class="shrink-0 text-right">
         © 2026 - 2026 <a class="link-line" target="_self" href={introPage}>{profileConfig.name}</a>. 
     </div>
 </footer>

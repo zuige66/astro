@@ -60,13 +60,13 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 
 const indexPage = getRelativeLocaleUrl(locale, '/');
-const pageTitle = `${siteConfig.title} - ${siteConfig.subTitle}`;
+const pageTitle = `${t("cover.title.home")} - ${siteConfig.title}`;
 
 ---
 
 <MainPageLayout title={pageTitle} lang={currentLang}>
     <Cover title={t("cover.title.home")} subTitle={t("cover.subTitle.home")} />
     <PostPage page={page} />
-    <Navi page={page} />
+    <Navi page={page} pageSize={siteConfig.pageSize} />
     <FabMenu showBackBottom={true} />
 </MainPageLayout>

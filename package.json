@@ -21,9 +21,9 @@
     "@iconify/svelte": "^5.2.1",
     "@myriaddreamin/typst-ts-node-compiler": "0.7.0-rc2",
     "@myriaddreamin/typst.ts": "0.7.0-rc2",
-    "@tailwindcss/vite": "^4.1.13",
+    "@tailwindcss/vite": "4.1.13",
     "aos": "^2.3.4",
-    "astro": "^7.2.1",
+    "astro": "7.2.1",
     "astro-icon": "^1.1.5",
     "dompurify": "^3.4.2",
     "hastscript": "^9.0.1",
@@ -39,7 +39,7 @@
     "remark-math": "^6.0.0",
     "sharp": "^0.34.3",
     "svelte": "^5.46.0",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "4.1.13",
     "typescript": "^5.9.3",
     "unist-util-visit": "^5.0.0"
   },
@@ -49,6 +49,7 @@
     "@iconify-json/fluent": "^1.2.45",
     "@iconify-json/material-symbols": "^1.2.35",
     "@iconify-json/simple-icons": "^1.2.48",
-    "@iconify-json/vscode-icons": "^1.2.29"
+    "@iconify-json/vscode-icons": "^1.2.29",
+    "vite": "7.3.6"
   }
 }

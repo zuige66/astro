@@ -155,10 +155,10 @@
 <div id="comment-{c.id}" data-aos="fade-up" class="flex gap-2 md:gap-3 w-full max-w-full">
   {#if c.url}
   <a href={c.url} target="_blank" rel="noopener noreferrer" class="w-10 h-10 shrink-0">
-    <img src={avatarUrl} alt="avatar" class="w-10 h-10 rounded-full object-cover"/>
+    <img src={avatarUrl} alt={t('comments.avatar')} class="w-10 h-10 rounded-full object-cover"/>
   </a>
   {:else}
-  <img src={avatarUrl} alt="avatar" class="w-10 h-10 rounded-full object-cover shrink-0"/>
+  <img src={avatarUrl} alt={t('comments.avatar')} class="w-10 h-10 rounded-full object-cover shrink-0"/>
   {/if}
 
   <div class="flex-1 min-w-0">
@@ -217,7 +217,7 @@
         </p>
       {:else}
         <p class="break-words whitespace-pre-wrap overflow-hidden w-full max-w-full min-w-0 text-gray-500">
-          {t('comments.noContent') || '评论内容为空'}
+          {t('comments.noContent')}
         </p>
       {/if}
     </div>
@@ -286,8 +286,8 @@
 
           {#if adminCommentKeyConfigured && isAdminEmail}
             <div>
-              <label for="reply-admin-key-{c.id}" class="block text-xs text-[var(--text-color)] mb-1">管理员验证密钥<span class="text-red-500">*</span></label>
-              <input id="reply-admin-key-{c.id}" type="password" placeholder="请输入管理员评论密钥" bind:value={replyAdminKey}
+              <label for="reply-admin-key-{c.id}" class="block text-xs text-[var(--text-color)] mb-1">{t('comments.adminKeyLabel')}<span class="text-red-500">*</span></label>
+              <input id="reply-admin-key-{c.id}" type="password" placeholder={t('comments.adminKeyPlaceholder')} bind:value={replyAdminKey}
                 class="rounded w-full text-[var(--text-color)] border border-[var(--button-border-color)] focus:outline-none focus:border-[var(--link-color)] text-sm py-1 px-2" />
             </div>
           {/if}
