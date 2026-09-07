@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
     comments: {
         enable: true, // Whether to enable comments
         platform: "default",
-        backendUrl: "https://api-momo.motues.top"
+        backendUrl: "https://momo-backend-worker.liruisen0413.workers.dev"
     },
     theme: {
         AOS: true, // Whether to enable AOS (Animate On Scroll) for animations
