@@ -1,66 +1,90 @@
-# Momo
+# zuige's blog
 
-<div align="center">
-    <img src="./doc/images/dark-light.jpg">
-    <p>一个极简的Blog模板，使用 <a href="https://astro.build/">Astro</a> 搭建</p>
-    <small><ins>简体中文</ins></small> <small><a href="./doc/README_en.md">English</a></small> 
-</div>
+这是一个基于 [Astro](https://astro.build/) 构建的个人博客，记录技术、学习与生活。目前部署在 [GitHub Pages](https://zuige66.github.io/astro/)。
 
-## ✨ 特性
+## 功能
 
-Momo 取自小红书📕，每个新用户最初的昵称，象征着初始新生。博客的设计理念也来自于此，从简约出发，在复杂功能与简约设计之间达到一种平衡。
+- 响应式博客页面，支持桌面端和移动端
+- 中英文双语切换
+- 明暗主题切换
+- 本地文章搜索、归档、目录和 RSS
+- Markdown、KaTeX、Typst、代码高亮和 GitHub 卡片
+- 使用 `public/zuige.png` 作为网站头像和 favicon
+- Momo 评论系统前端组件
 
-* **极简设计**：页面设计简约，黑白为主色调，蓝色进行点缀
-* **深色模式**：支持手动切换或自动跟随系统
-* **文章搜索功能**：使用 [pagefind](https://pagefind.app/) 实现本地化搜索功能
-* **国际化（i18n）**：支持多语言切换，目前支持简体中文、英文
-* **移动端适配**：组件针对移动端进行优化，拥有和电脑浏览器一样的流畅体验
-* **评论功能**：支持本地部署和 Cloudflare 部署，具体参考 [Backend](https://github.com/Motues/Momo-Backend)
-* **丰富的Markdown语法**：支持 KaTex，Typst，Alert 组件，GitHub 卡片，自定义语法等
-* 其他基本功能：文章分类，目录，RSS订阅，字数统计，阅读时间
+## 本地运行
 
-## 🚀 快速开始
+要求：Node.js 22 或更高版本。
 
-1. 克隆本项目
-    ```bash
-    git clone https://github.com/Motues/Momo.git
-    cd Momo
-    ```
-2. 运行 `pnpm install` 安装依赖（使用 `npm install -g pnpm` 安装 `pnpm`）
-3. 运行 `pnpm dev` 启动开发服务器
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
 
-## 🔧 配置
+启动后访问 `http://localhost:4321`。
 
-参考 [配置指南](./doc/config_zh-cn.md)，详细信息可以访问 [Momo](https://momo.motues.top/intro/config)，阅读对应文章获取详细信息。
+## 常用命令
 
-## 📚 更新
-
-参考 [更新指南](./doc/release_zh-cn.md)，介绍如何更新项目，详细信息可以访问 [Momo](https://momo.motues.top/intro/release)。
-
-## 🍃 分支
-
-下面是一些分支，会不定期进行维护，无法保证与 `main` 分支一致
-
-* `memos`：实现 Memos 卡片功能
-* `v6`：将依赖升级到 Astro v6
-
-## ⚡ 指令
-
-以下所有的指令可以在根目录下面执行
-
-| 指令 | 作用 |
+| 命令 | 作用 |
 | --- | --- |
-| `pnpm install` | 安装依赖 |
-| `pnpm dev` | 启动本地服务器，运行在 `http://localhost:4321` |
-| `pnpm build` | 构建发布版本到 `./dist` 目录下 |
-| `pnpm preview` | 预览构建后的发布版本 |
-| `pnpm astro ...` | 运行 `astro` 命令，例如 `astro add` |
-| `pnpm newpost <path> <lang>` | 创建新文章，例如 `pnpm newpost docs/test.md zh-cn`，语言可以省略，默认为`zh-cn` |
-| `pnpm cms` | 启动本地 CMS 管理后台，运行在 `http://localhost:5188`（首次使用前先执行 `pnpm install`） |
+| `npm.cmd run dev` | 启动开发服务器 |
+| `npm.cmd run build` | 构建生产版本到 `dist/` |
+| `npm.cmd run preview` | 预览生产构建结果 |
+| `npm.cmd run newpost` | 创建新文章 |
+| `npm.cmd run cms` | 启动本地 CMS |
 
+## 修改内容
 
-## 📚 参考
+- 博客基本信息：`src/config.ts`
+- 头像和 favicon：`public/zuige.png`
+- 个人资料：`src/config.ts` 中的 `profileConfig`
+- 关于页中文正文：`src/content/spec/about/zh-cn.md`
+- 关于页英文正文：`src/content/spec/about/en.md`
+- 中文界面文字：`src/i18n/language/zh-cn.ts`
+- 英文界面文字：`src/i18n/language/en.ts`
+- 博客文章：`src/content/blog/`
 
-* [Astro](https://astro.build/)
-* [Fuwari](https://github.com/saicaca/fuwari)
-* [Tyndall](https://github.com/moyuin-aka/tyndall-public)
+## 评论系统
+
+评论前端已经集成。若在本机运行 Momo Backend，可以启动 Docker 容器：
+
+```powershell
+docker start momo-backend
+```
+
+本地测试时，将 `src/config.ts` 中的 `backendUrl` 设置为：
+
+```ts
+backendUrl: "http://localhost:3000"
+```
+
+然后同时运行博客和后端。本地评论数据保存在 Docker 的 `momo-data` 数据卷中。
+
+GitHub Pages 是静态网站，线上评论需要一个公网可访问的 Momo Backend 地址，并将该地址填入 `backendUrl`。仅运行本机 Docker 后端无法让线上访客提交评论。
+
+后端项目和部署文档：[Motues/Momo-Backend](https://github.com/Motues/Momo-Backend)
+
+## 部署到 GitHub Pages
+
+项目已配置 GitHub Actions。将代码推送到 `main` 分支后，工作流会自动构建并部署网站：
+
+```bash
+git add .
+git commit -m "update blog"
+git push origin main
+```
+
+首次使用时，在 GitHub 仓库的 **Settings → Pages** 中将发布来源设置为 **GitHub Actions**。
+
+## 项目结构
+
+```text
+public/                 静态资源
+src/components/         页面组件
+src/content/blog/       博客文章
+src/content/spec/       关于页、友链页等固定页面内容
+src/i18n/               多语言文字
+src/pages/              页面路由
+src/config.ts           网站配置
+.github/workflows/      GitHub Pages 部署流程
+```

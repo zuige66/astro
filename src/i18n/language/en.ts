@@ -30,6 +30,10 @@ const translation: Translation = {
     },
     button: {
         switchDarkMode: "Switch Dark Mode",
+        search: "Search",
+        close: "Close",
+        language: "Change language",
+        mobileMenu: "Open menu",
         backToTop: "Back to Top",
         backToBottom: "Back to Bottom",
         meun: "Menu",
@@ -39,7 +43,12 @@ const translation: Translation = {
     search: {
         placeholder: "Enter keywords to start searching",
         noresult: "No results found.",
-        error: "Search error occurred. Please try again later."
+        error: "Search error occurred. Please try again later.",
+        unavailable: "Search is temporarily unavailable.",
+        devTitle: "Development search preview",
+        devDescription: "The Pagefind search index is not loaded in development.",
+        devPreviewTitle: "Test search after building",
+        devPreviewDescription: "Run npm run build and npm run preview to test the complete search."
     },
     license: {
         author: "Author",
@@ -98,6 +107,14 @@ const translation: Translation = {
         list: "List",
         showMoreReplies: "Show more replies",
         collapseReplies: "Collapse",
+        noContent: "This comment is empty",
+        adminKeyLabel: "Administrator verification key",
+        adminKeyPlaceholder: "Enter the administrator comment key",
+        avatar: "Avatar",
+    },
+    footer: {
+        poweredBy: "Powered by",
+        rss: "RSS feed",
     },
     langNote: {
         note: "Note: ",

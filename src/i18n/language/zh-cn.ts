@@ -30,6 +30,10 @@ const translation: Translation = {
     },
     button: {
         switchDarkMode: "切换明暗模式",
+        search: "搜索",
+        close: "关闭",
+        language: "切换语言",
+        mobileMenu: "打开菜单",
         backToTop: "回到顶部",
         backToBottom: "回到底部",
         meun: "菜单",
@@ -39,7 +43,12 @@ const translation: Translation = {
     search: {
         placeholder: "输入关键词开始搜索",
         noresult: "未找到相关结果",
-        error: "搜索出现错误，请稍后重试"
+        error: "搜索出现错误，请稍后重试",
+        unavailable: "搜索功能暂时不可用",
+        devTitle: "开发环境搜索预览",
+        devDescription: "开发环境暂不加载 Pagefind 搜索索引。",
+        devPreviewTitle: "构建后测试搜索",
+        devPreviewDescription: "运行 npm run build 和 npm run preview 后即可测试完整搜索。"
     },
     license: {
         author: "作者",
@@ -98,6 +107,14 @@ const translation: Translation = {
         list: "列表",
         showMoreReplies: "查看剩余回复",
         collapseReplies: "收起回复",
+        noContent: "评论内容为空",
+        adminKeyLabel: "管理员验证密钥",
+        adminKeyPlaceholder: "请输入管理员评论密钥",
+        avatar: "头像",
+    },
+    footer: {
+        poweredBy: "由以下技术驱动",
+        rss: "RSS 订阅",
     },
     langNote: {
         note: "注意：",

@@ -28,6 +28,10 @@ export interface Translation {
     };
     button: {
         switchDarkMode: string;
+        search: string;
+        close: string;
+        language: string;
+        mobileMenu: string;
         backToTop: string;
         backToBottom: string;
         meun: string;
@@ -38,6 +42,11 @@ export interface Translation {
         placeholder: string;
         noresult: string;
         error: string;
+        unavailable: string;
+        devTitle: string;
+        devDescription: string;
+        devPreviewTitle: string;
+        devPreviewDescription: string;
     };
     license: {
         author: string;
@@ -96,6 +105,14 @@ export interface Translation {
         list: string;
         showMoreReplies: string;
         collapseReplies: string;
+        noContent: string;
+        adminKeyLabel: string;
+        adminKeyPlaceholder: string;
+        avatar: string;
+    },
+    footer: {
+        poweredBy: string;
+        rss: string;
     },
     langNote: {
         note: string;
