@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/markdown-remark": "^7.2.2",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/svelte": "^9.0.1",
+    "@astrojs/svelte": "8.1.2",
     "@chinese-fonts/lxgwwenkaibright": "^2.0.0",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource/eb-garamond": "^5.2.7",
@@ -23,7 +23,7 @@
     "@myriaddreamin/typst.ts": "0.7.0-rc2",
     "@tailwindcss/vite": "4.1.13",
     "aos": "^2.3.4",
-    "astro": "7.2.1",
+    "astro": "6.4.8",
     "astro-icon": "^1.1.5",
     "dompurify": "^3.4.2",
     "hastscript": "^9.0.1",

@@ -42,6 +42,9 @@ function getVisiblePages(current: number, total: number) {
 
 const visiblePages = getVisiblePages(currentPage, totalPages);
 
+const currentLang = Astro.currentLocale || i18n!.defaultLocale;
+const t = i18nit(currentLang);
+
 const getPageUrl = (p: number) => {
   const pagePart = p === 1 ? '' : `${p}/`;
   return sizePath ? `/${sizePath}/${pagePart}` : (p === 1 ? '/' : `/${p}/`);
@@ -58,9 +61,6 @@ const sizeUrl = (value: string) => {
   if (value === String(siteConfig.pageSize)) return getRelativeLocaleUrl(currentLang, '/');
   return getRelativeLocaleUrl(currentLang, `/size/${value}/`);
 };
-
-const currentLang = Astro.currentLocale || i18n!.defaultLocale;
-const t = i18nit(currentLang);
 
 // 样式类：整合了移动端和桌面端的差异
 const btnBaseClass = "p-2 md:px-4 md:py-2 flex items-center border rounded-lg transition-all duration-200";
