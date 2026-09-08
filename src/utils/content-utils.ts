@@ -53,10 +53,6 @@ export async function getBlogEntrySort(
     if (lang && lang !== defaultLanguage) {
       if (translations[lang]) {
         selectedPost = translations[lang];
-      } else if (translations[defaultLanguage]) {
-        // --- 关键修改点：触发回退逻辑 ---
-        selectedPost = translations[defaultLanguage];
-        isFallback = true; 
       }
     } else {
       if (translations[defaultLanguage]) {
