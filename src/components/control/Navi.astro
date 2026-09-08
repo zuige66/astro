@@ -69,17 +69,6 @@ const btnDisabledProps = "text-[var(--text-color-30)] border-[var(--button-borde
 ---
 
 <nav data-aos="fade-up" class="flex flex-col gap-4 my-8 max-w-[var(--page-width)] mx-auto text-sm">
-  <div class="flex items-center justify-end gap-2 text-[var(--text-color-70)]">
-    <label for="page-size">{currentLang === 'en' ? 'Posts per page' : '每页文章数'}</label>
-    <select id="page-size" class="rounded-lg border border-[var(--button-border-color)] bg-transparent px-3 py-2 text-[var(--text-color)]">
-      {sizeOptions.map((option) => (
-        <option value={sizeUrl(option.value)} selected={sizePath === 'size/all' ? option.value === 'all' : pageSize === Number(option.value)}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  </div>
-
   <div class="flex flex-row justify-between items-center gap-1">
   
   <a 
@@ -92,6 +81,17 @@ const btnDisabledProps = "text-[var(--text-color-30)] border-[var(--button-borde
     </svg>
     <span class="hidden md:inline">{t("pageNavigation.previous")}</span>
   </a>
+
+  <div class="flex items-center gap-2 ml-1 md:ml-2 text-[var(--text-color-70)]">
+    <label for="page-size" class="hidden sm:inline">Posts per page</label>
+    <select id="page-size" class="rounded-lg border border-[var(--button-border-color)] bg-transparent px-2 py-2 md:px-3 text-[var(--text-color)]">
+      {sizeOptions.map((option) => (
+        <option value={sizeUrl(option.value)} selected={sizePath === 'size/all' ? option.value === 'all' : pageSize === Number(option.value)}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  </div>
 
   <div class="flex items-center gap-1 md:gap-2 flex-nowrap overflow-x-auto no-scrollbar">
     {visiblePages.map((p) => {
