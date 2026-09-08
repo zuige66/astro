@@ -68,32 +68,33 @@ const btnActiveProps = "text-[var(--text-color)] hover:bg-[var(--button-hover-co
 const btnDisabledProps = "text-[var(--text-color-30)] border-[var(--button-border-color)] opacity-40 cursor-not-allowed pointer-events-none";
 ---
 
-<nav data-aos="fade-up" class="flex flex-col gap-4 my-8 max-w-[var(--page-width)] mx-auto text-sm">
-  <div class="flex flex-row justify-between items-center gap-1">
-  
-  <a 
-    href={showPrevious ? getRelativeLocaleUrl(currentLang, getPageUrl(currentPage - 1)) : "#"} 
-    class={`${btnBaseClass} ${showPrevious ? btnActiveProps : btnDisabledProps}`}
-    aria-label={t("pageNavigation.previous")}
-  >
-    <svg class="w-5 h-5 md:mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-    </svg>
-    <span class="hidden md:inline">{t("pageNavigation.previous")}</span>
-  </a>
+<nav data-aos="fade-up" class="my-8 max-w-[var(--page-width)] mx-auto text-sm">
+  <div class="grid grid-cols-[1fr_auto_1fr] items-stretch gap-2 sm:gap-4">
+    <div class="flex min-w-0 items-center gap-1 sm:gap-2">
+      <a 
+        href={showPrevious ? getRelativeLocaleUrl(currentLang, getPageUrl(currentPage - 1)) : "#"} 
+        class={`${btnBaseClass} ${showPrevious ? btnActiveProps : btnDisabledProps}`}
+        aria-label={t("pageNavigation.previous")}
+      >
+        <svg class="w-5 h-5 md:mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        <span class="hidden md:inline">{t("pageNavigation.previous")}</span>
+      </a>
 
-  <div class="flex items-center gap-2 ml-1 md:ml-2 text-[var(--text-color-70)]">
-    <label for="page-size" class="hidden sm:inline">Posts per page</label>
-    <select id="page-size" class="rounded-lg border border-[var(--button-border-color)] bg-transparent px-2 py-2 md:px-3 text-[var(--text-color)]">
-      {sizeOptions.map((option) => (
-        <option value={sizeUrl(option.value)} selected={sizePath === 'size/all' ? option.value === 'all' : pageSize === Number(option.value)}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  </div>
+      <div class="flex min-w-0 items-center gap-2 text-[var(--text-color-70)]">
+        <label for="page-size" class="hidden sm:inline whitespace-nowrap">{currentLang === 'en' ? 'Posts per page' : '每页文章数'}</label>
+        <select id="page-size" class="rounded-lg border border-[var(--button-border-color)] bg-transparent px-2 py-2 md:px-3 text-[var(--text-color)]">
+          {sizeOptions.map((option) => (
+            <option value={sizeUrl(option.value)} selected={sizePath === 'size/all' ? option.value === 'all' : pageSize === Number(option.value)}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
 
-  <div class="flex items-center gap-1 md:gap-2 flex-nowrap overflow-x-auto no-scrollbar">
+  <div class="flex items-center justify-center gap-1 md:gap-2 flex-nowrap overflow-x-auto no-scrollbar">
     {visiblePages.map((p) => {
       if (p === '...') {
         return (
@@ -123,16 +124,20 @@ const btnDisabledProps = "text-[var(--text-color-30)] border-[var(--button-borde
     })}
   </div>
 
-  <a 
-    href={showNext ? getRelativeLocaleUrl(currentLang, getPageUrl(currentPage + 1)) : "#"} 
-    class={`${btnBaseClass} ${showNext ? btnActiveProps : btnDisabledProps}`}
-    aria-label={t("pageNavigation.next")}
-  >
-    <span class="hidden md:inline">{t("pageNavigation.next")}</span>
-    <svg class="w-5 h-5 md:ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-    </svg>
-  </a>
+    </div>
+
+    <div class="flex justify-end">
+      <a 
+        href={showNext ? getRelativeLocaleUrl(currentLang, getPageUrl(currentPage + 1)) : "#"} 
+        class={`${btnBaseClass} ${showNext ? btnActiveProps : btnDisabledProps}`}
+        aria-label={t("pageNavigation.next")}
+      >
+        <span class="hidden md:inline">{t("pageNavigation.next")}</span>
+        <svg class="w-5 h-5 md:ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </nav>
 
