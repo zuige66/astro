@@ -1,5 +1,5 @@
 ---
-title: Astro 博客构建失败：依赖冲突与分页语言错误的排查记录
+title: "Astro 博客构建失败：依赖冲突与分页语言错误的排查记录"
 pubDate: 2026-09-08
 draft: false
 description: 记录 Astro 博客在 Windows 上安装依赖和构建时遇到的 ERESOLVE、source-map-js 与 currentLang 错误，以及最终的解决办法。

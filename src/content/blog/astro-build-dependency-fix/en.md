@@ -1,5 +1,5 @@
 ---
-title: Fixing Astro Build Failures: Dependency Conflicts and a Pagination Language Bug
+title: "Fixing Astro Build Failures: Dependency Conflicts and a Pagination Language Bug"
 pubDate: 2026-09-08
 draft: false
 description: A practical record of fixing ERESOLVE, source-map-js, and currentLang errors while building an Astro blog on Windows.
