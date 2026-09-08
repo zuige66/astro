@@ -193,6 +193,20 @@
   line-height: 1.5;
 }
 
+.markdown-content pre.astro-code,
+.markdown-content pre.astro-code code,
+.markdown-content pre.astro-code span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+[data-theme="dark"] .markdown-content pre.astro-code,
+[data-theme="dark"] .markdown-content pre.astro-code code,
+[data-theme="dark"] .markdown-content pre.astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
 [data-theme="dark"] .markdown-content pre {
   background-color: rgba(0, 0, 0, 0.2);
 }
