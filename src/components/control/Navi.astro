@@ -5,7 +5,7 @@ import { getRelativeLocaleUrl } from '@utils/url-utils';
 import { siteConfig } from '@/config';
 
 const { page } = Astro.props;
-const { pageSize = 5, sizePath = '' } = Astro.props;
+const { pageSize = 20, sizePath = '' } = Astro.props;
 
 const currentPage = page.currentPage;
 const totalPages = page.lastPage;
@@ -53,6 +53,7 @@ const getPageUrl = (p: number) => {
 const sizeOptions = [
   { value: '5', label: '5' },
   { value: '10', label: '10' },
+  { value: '20', label: '20' },
   { value: '25', label: '25' },
   { value: '50', label: '50' },
   { value: 'all', label: currentLang === 'en' ? 'All' : '全部' },

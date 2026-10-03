@@ -20,7 +20,7 @@ The primary configuration files for the website are `astro.config.mjs` and `src/
 * `title`: Site title
 * `subTitle`: Site subtitle
 * `favicon`: Site icon
-* `pageSize`: Number of articles per page
+* `pageSize`: Number of articles per page (default: `20`)
 * `toc`
     * `enable`: Enable table of contents
     * `depth`: Table of contents depth

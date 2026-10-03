@@ -22,7 +22,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   for (const locale of i18n.locales) {
     const localeCode = typeof locale === 'string' ? locale : locale.path;
     if (localeCode === i18n.defaultLocale) continue;
-    for (const size of ['5', '10', '25', '50', 'all']) {
+    for (const size of ['5', '10', '20', '25', '50', 'all']) {
       const entries = await getBlogEntrySort(localeCode, undefined, (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => {
         const pinA = a.data.pinTop ?? 0;
         const pinB = b.data.pinTop ?? 0;

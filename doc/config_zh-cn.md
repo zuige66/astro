@@ -20,7 +20,7 @@
 * `title`: 网站的标题
 * `subTitle`: 网站的副标题
 * `favicon`: 网站的图标
-* `pageSize`: 每页显示的文章数量
+* `pageSize`: 每页显示的文章数量，默认值为 `20`
 * `toc`
     * `enable`: 是否启用目录
     * `depth`: 目录的深度
