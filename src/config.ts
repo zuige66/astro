@@ -39,7 +39,7 @@ export const profileConfig: ProfileConfig = {
     avatar: "/zuige.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
     name: "zuige",
     description: "A blog about technology and life",
-    indexPage: "https://zuige66.github.io/astro",
+    indexPage: "https://momoblog.zuiges.com",
     startYear: 2024,
 }
 

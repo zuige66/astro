@@ -11,7 +11,7 @@ pinTop: 0
 
 昨天用 Codex 改博客时，终端和文件编辑工具突然变得不稳定：普通 PowerShell 有时可以执行，但需要受限环境的操作会失败或卡住。最后弹出了一个更直接的错误窗口：Windows 找不到 `codex-windows-sandbox-setup.exe`。
 
-![Windows 找不到 codex-windows-sandbox-setup.exe](/astro/images/codex-windows-sandbox-setup-error.png)
+![Windows 找不到 codex-windows-sandbox-setup.exe](/images/codex-windows-sandbox-setup-error.png)
 
 这篇文章记录问题的判断过程，以及在 Windows 上可行的恢复方法。
 

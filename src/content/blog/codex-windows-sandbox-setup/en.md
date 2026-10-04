@@ -11,7 +11,7 @@ pinTop: 0
 
 While I was editing this blog with Codex yesterday, the terminal and file-editing tools suddenly became unstable. Basic PowerShell commands sometimes worked, but operations requiring a restricted environment would fail or hang. Eventually, a more specific error appeared: Windows could not find `codex-windows-sandbox-setup.exe`.
 
-![Windows could not find codex-windows-sandbox-setup.exe](/astro/images/codex-windows-sandbox-setup-error.png)
+![Windows could not find codex-windows-sandbox-setup.exe](/images/codex-windows-sandbox-setup-error.png)
 
 This post records how I diagnosed the issue and the recovery method that worked on Windows.
 

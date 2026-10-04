@@ -25,6 +25,10 @@ Below are general modification suggestions.
 
 ## Version Information
 
+### Custom domain deployment
+
+After binding a custom domain, set `site` in `astro.config.mjs` to that domain and set `base` to `/`. When referencing files from `public` in articles, use root paths such as `/images/...` so the site does not continue requesting the old `/astro/` path.
+
 > Version numbers follow the `YY.MM.DD` format
 
 ### 26.8.15

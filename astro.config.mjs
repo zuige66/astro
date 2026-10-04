@@ -25,8 +25,8 @@ import { siteConfig } from './src/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://zuige66.github.io',
-  base: '/astro',
+  site: 'https://momoblog.zuiges.com',
+  base: '/',
   i18n: {
     locales: ['zh-cn', 'en'],
     defaultLocale: 'zh-cn',
