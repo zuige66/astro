@@ -2,16 +2,16 @@
 title: Buying a Top-Level Domain Cheaply
 pubDate: "2026-10-04T15:00:00+08:00"
 draft: false
-description: Register a domain through Google Workspace, check regional eligibility and renewal costs, verify the registrant email, and manage subscriptions.
+description: Fees, regional pricing differences, registrant requirements, post-payment verification, and Workspace trial cancellation for Google Workspace domain registration.
 image: ""
 slugId: domain-three-sites-server-github-pages
-category: Tutorials
+category: Technology
 pinTop: 0
 ---
 
 When buying a top-level domain, the first-year price is only one part of the bill. Region, currency, taxes, first-year discounts, and renewal prices stack together, making it easy to overlook the next year’s renewal cost, registration detail verification, and whether the Workspace trial will automatically renew.
 
-This guide covers the fees, registration details, verification, and subscription settings involved in buying a domain through the Google Workspace signup flow. The original draft recorded a first-year price of about 75 Turkish lira (roughly CNY 12) for the Turkey region. Treat that only as a historical note from the draft, not as a current quote or an offer available to everyone. Use only a billing region for which the registrant is genuinely eligible, and provide accurate, verifiable registration details. `.com` is an example; availability depends on search results.
+This guide covers the fees, registration details, verification, and subscription settings involved in buying a domain through the Google Workspace signup flow. `.com` is used only as an example; the actual available TLDs depend on the search results.
 
 ## 1. Check the Costs
 
@@ -25,15 +25,25 @@ A domain order usually includes three parts:
 
 Save the order summary and renewal details before payment. Domain registration fees and Workspace subscription fees are two separate bills; the first-year price on the checkout page does not equal the cost for every following year.
 
-Google’s official documentation states: the billing country affects available currencies and payment methods; changing the billing country may also require proof of a business or residential address in that country. [Google Workspace billing country documentation](https://support.google.com/a/answer/3530790); [Payment methods by region](https://support.google.com/a/answer/2380700)
+## 2. Regional Pricing Differences
 
-The original draft recorded a first-year Turkey-region price of about 75 Turkish lira (roughly CNY 12). Exchange rates, promotions, and eligibility can change, so this is not a current quote. The eligible checkout page shows the final price.
+First-year domain prices differ significantly between billing regions. For the Turkey region, the historical first-year price was about 75 Turkish lira (roughly CNY 12), while the same suffix in other regions can cost several times more. These differences come from regional pricing strategy, currency, and promotions, not from a discount that can be applied at will.
 
-## 2. Register the Domain
+Three points need to be clear before you rely on this:
 
-Open the [Google Workspace](https://workspace.google.com/) registration flow. When the page asks whether the organization already has a domain, choose “No, I need a domain,” then enter the desired name, such as `example.com`.
+**1. Prices change with region and promotion.** Exchange rates, sales, and pricing policy changes all affect the final amount. Figures circulating online are records from a specific moment in time and should not be treated as current quotes. Your own checkout page is the only reliable source.
 
-Select the billing country or region that matches the actual residence or place of business, and keep the payment and registrant details consistent. Select Turkey only when genuinely eligible there; do not enter a fabricated address or payment details to obtain regional pricing. Google says the legal country on a payments profile cannot be changed directly; a move to another country requires a new payments profile. [Google payments profile country guidance](https://support.google.com/faqs/answer/7644076?hl=en)
+**2. The billing country determines which price you see, but it is a binding commitment.** Google determines regional pricing and available payment methods based on the country on the payment profile. This is not something you can switch freely—Google states explicitly that the legal country of a payment profile cannot be changed directly, and that moving to another country requires creating a new payment profile. [Google payment profile country documentation](https://support.google.com/faqs/answer/7644076) In other words, if you pick the wrong country, switching back means rebuilding the payment profile and re-verifying it.
+
+**3. Eligibility is a precondition.** Regional pricing is available to qualifying users. The billing country, payment profile, and registrant contact information must be consistent with each other. If your actual residence or company registration is not in the chosen region, you do not qualify for that region's pricing. The billing country also affects available currencies and payment methods. [Google Workspace billing country documentation](https://support.google.com/a/answer/3530790); [Payment methods by region](https://support.google.com/a/answer/2380700)
+
+So the right way to think about a low price is: **among the regions you genuinely qualify for, pick the one with better pricing**—not picking an arbitrary region and applying its prices.
+
+## 3. Register the Domain
+
+Open the [Google Workspace](https://workspace.google.com/) registration flow. When the page asks whether you already have a domain, choose “No, I need a domain,” then enter the name you want to register, such as `example.com`.
+
+In the billing country or region field, select the region that matches your actual residence or company registration, and make sure the payment profile and registrant contact information agree. Before confirming, verify that this country reflects your actual situation, because it determines the currency and payment method for future renewals, and changing it later is costly.
 
 After entering the domain, complete the following checks:
 
@@ -43,23 +53,25 @@ After entering the domain, complete the following checks:
 
 After a domain is submitted for registration, changing the registrant information, transferring the registrar, or requesting a refund may be restricted. Verify the name, spelling, and contact email before submitting.
 
-## 3. Fill in Registration Details
+## 4. Fill in Registration Details
 
-Registration details are used for domain verification, renewal notices, and future transfers. Enter genuine and current information for the registrant or organization, country/region, address, phone number, and email. Do not use an address generator to fabricate a registration address or phone number.
+Registration details are used for domain verification, renewal notices, and future transfers. This information becomes part of the public registration record (WHOIS), so it must be accurate.
 
 | Field | What to fill in |
 | --- | --- |
 | Registrant name or organization | The actual holder’s name, or the name of the organization that actually owns the domain |
-| Country/Region | The actual country/region of residence or business registration |
-| Address, city, postal code | A real, verifiable contact address |
-| Phone | A reachable number with the correct country code |
-| Registrant email | A durable, accessible address for verification, renewal, and transfer confirmation |
+| Country/Region | Matching your actual residence or company registration |
+| Address, city, postal code | A verifiable real contact address |
+| Phone | A real number that reaches the registrant, with the correct country code |
+| Registrant email | An email address you can keep receiving mail at, used for verification, renewal, and transfer confirmation |
+
+ICANN's domain registration rules require registrant details to be true and accurate. Using address generators or similar tools to fabricate an address and phone number leaves the domain in a state where it can be suspended at any time—registrars are obliged to verify details, and a domain with false information will be suspended once discovered, with little chance of a successful appeal.
 
 The registrant email must be real and able to receive mail long-term. Domain registration requires verifying the contact email, and future domain transfers or registration information changes also depend on this email. Squarespace states that a verification email is sent after registering or modifying domain registration information; if verification is not completed within the required period, the domain may be suspended. [Squarespace domain verification documentation](https://support.squarespace.com/hc/en-us/articles/205812218-Verifying-your-Squarespace-managed-domain)
 
-WHOIS privacy can hide some public details, but it does not replace accurate registration information. The registrant name, contact details, and email must be genuine and valid.
+Privacy protection reduces what is shown in public WHOIS, which is its legitimate purpose. But it solves “I do not want this published,” not “this information can be made up.” These two things should not be conflated.
 
-## 4. Verify After Payment
+## 5. Verify After Payment
 
 After successful payment, immediately complete the following two checks.
 
@@ -73,11 +85,11 @@ Google Domains’ domain business has migrated to Squarespace, so for domains th
 
 Set two reminders in your calendar: one 30 days before the domain expires, and another 7 days before expiration. After a domain expires, the website, email, and redirects may all be interrupted; renewing in advance is usually cheaper than recovering it after expiration.
 
-## 5. Handle the Workspace Trial
+## 6. Handle the Workspace Trial
 
 When registering a domain through Google Workspace, the page may also create a Workspace trial or subscription. Workspace provides business email, cloud documents, and other services; domain registration is responsible for holding and managing the web address. The two need to be checked separately.
 
-**When only the domain is needed, cancel the Workspace subscription before the trial ends.**
+**If you only want to keep the domain and do not plan to use business email, you must cancel the Workspace subscription before the trial ends.**
 
 Steps:
 
@@ -87,17 +99,17 @@ Steps:
 4. Follow the on-page instructions to cancel the subscription, or set it not to renew after the current cycle.
 5. In the retention pop-up, click “Continue cancellation process,” then choose “Cancel at the end of the current cycle” in the next step.
 6. If the system asks whether to cancel the domain as well, **be sure to choose “Keep domain.”**
-7. Return to the domain dashboard and confirm that registration remains valid and the DNS and renewal pages are accessible.
+7. Return to the domain dashboard, confirm that domain registration is still valid, and confirm that you can still access the DNS and renewal pages.
 
-Before canceling, confirm that Workspace is not needed for business email or cloud files. Google also warns that an organization account managing other subscriptions, such as domain registration, should not be deleted directly. [Cancel Google Workspace official documentation](https://support.google.com/a/answer/1257646)
+Before canceling, confirm that you do not rely on Workspace for business email or cloud files. Google’s cancellation documentation also reminds users: if the organization account still manages other subscriptions (such as domain registration), do not delete the organization account directly. [Cancel Google Workspace official documentation](https://support.google.com/a/answer/1257646)
 
 Plan names, trial periods, and button text in the admin console may be updated; rely on what your own billing page shows. Before final confirmation, check again: what is being canceled is the Workspace service, and what is being kept is the domain registration.
 
-## 6. Check the Domain Dashboard
+## 7. Check the Domain Dashboard
 
 After domain registration is complete, check at least the following items:
 
-- Whether the registrant email has been verified and remains accessible long-term.
+- Whether the registrant email has been verified and whether you can log in to it long-term.
 - Whether auto-renewal is enabled and whether the payment method is valid.
 - Whether the renewal price, renewal date, and billing currency are clear.
 - Where the DNS management entry is; it will be used for future website resolution.
@@ -106,7 +118,7 @@ After domain registration is complete, check at least the following items:
 
 Squarespace states: domain transfers require unlocking the domain and sending an authorization code to the registrant email. This is also why the registrant email must be real and able to receive mail. [Squarespace domain transfer documentation](https://support.squarespace.com/hc/en-us/articles/205812338-Transferring-a-domain-away-from-Squarespace)
 
-## 7. Confirmation Checklist
+## 8. Confirmation Checklist
 
 After completing payment, confirm item by item:
 
@@ -115,4 +127,4 @@ After completing payment, confirm item by item:
 - The billing country, contact details, and payment method are all real and verifiable.
 - You can log in to the domain dashboard and find the DNS, renewal, and registrant information pages.
 
-The first-year price is only the beginning. Only after the renewal price, verification email, and dashboard management permissions are all confirmed can the domain be used stably over the long term.
+The first-year price is only the beginning. Only after the renewal price, verification email, and dashboard management permissions are all confirmed can the domain be used stably over the long term. And a low price from a regional rate is only a sustainable cost advantage when it rests on genuine eligibility and accurate details—the first-year cost saved through fabricated information can be paid back twofold during renewal or verification.
