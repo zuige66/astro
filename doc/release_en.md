@@ -29,6 +29,8 @@ Below are general modification suggestions.
 
 After binding a custom domain, set `site` in `astro.config.mjs` to that domain and set `base` to `/`. When referencing files from `public` in articles, use root paths such as `/images/...` so the site does not continue requesting the old `/astro/` path.
 
+For a friend-link avatar hosted on another site, keep the complete `https://` URL and do not prepend the site's `base` path. Only local avatars in `public` should use the site's root path.
+
 > Version numbers follow the `YY.MM.DD` format
 
 ### 26.8.15

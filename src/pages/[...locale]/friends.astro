@@ -25,6 +25,8 @@ if (!friendsPost) {
 const { Content } = await render(friendsPost);
 
 const pageTitle = t("header.friends") + " - " + siteConfig.title;
+const getFriendAvatarUrl = (avatar: string) =>
+    /^https?:\/\//i.test(avatar) ? avatar : baseUrl(avatar);
 ---
 
 <MainPageLayout title={pageTitle} lang={currentLang}>
@@ -42,7 +44,7 @@ const pageTitle = t("header.friends") + " - " + siteConfig.title;
                     >
                         <div class="flex items-center min-w-0">
                             <img 
-                                src={baseUrl(friend.avatar)} 
+                                src={getFriendAvatarUrl(friend.avatar)} 
                                 alt={friend.name} 
                                 class="w-16 h-16 rounded-full object-cover mr-4 flex-shrink-0"
                                 onerror="this.src='https://www.gravatar.com/avatar/?d=mp'"

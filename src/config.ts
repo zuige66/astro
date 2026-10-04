@@ -52,14 +52,14 @@ export const licenseConfig: LicenseConfig = {
 export const friendLinkConfig: FriendLink[] = [
     {
         name: 'zuige',
-        avatar: '/zuige.png',
-        url: 'https://zuige.cc.cd',
+        avatar: 'https://blog.zuiges.com/img/avatar.jpg',
+        url: 'https://blog.zuiges.com',
         description: 'A blog about technology and life'
     },
     {
         name: '豆格 BEADGRID',
         avatar: 'https://zuige66.github.io/pindou/beadgrid-icon.png',
         url: 'https://zuige66.github.io/pindou/',
-        description: '在线将照片、插画或像素图转换为拼豆图纸，支持颜色调整、色号统计和图纸下载。'
+        description: '在线将照片转换为拼豆图纸'
     }
 ]
