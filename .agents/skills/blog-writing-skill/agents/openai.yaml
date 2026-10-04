@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blog Writing Skill"
+  short_description: "Write detailed, structured, reproducible Chinese tutorial posts"
+  default_prompt: "Use $blog-writing-skill to draft or revise a detailed tutorial post."
