@@ -74,7 +74,7 @@ D:\ROM\gauguin\hyperos3
 
 本次线刷记录耗时约 342 秒。设备、电脑和包体不同，耗时会有差异。
 
-![MiFlash 显示 flash done 与 success](/img/redmi-note9-pro-hyperos3/miflash-success.png)
+![MiFlash 显示 flash done 与 success](/img/redmi-note9-pro-hyperos3/miflash-success.png?v=20261007)
 
 ## 四、检查系统启动
 

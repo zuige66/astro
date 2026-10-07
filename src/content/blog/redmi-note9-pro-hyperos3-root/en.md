@@ -74,7 +74,7 @@ Success indicator: Mi Unlock reports success, or the device unlock-status page s
 
 The recorded flash took about 342 seconds. Timing varies with the device, computer, and package size.
 
-![MiFlash showing flash done and success](/img/redmi-note9-pro-hyperos3/miflash-success.png)
+![MiFlash showing flash done and success](/img/redmi-note9-pro-hyperos3/miflash-success.png?v=20261007)
 
 ## 4. Verify the system boot
 
