@@ -47,12 +47,11 @@ The module gates by exact build fingerprint. If the device or OS version does no
 
 Success signs: the lock screen shows large time digits and a full-screen cover, with a playback control bar at the bottom; the configuration app shows the system version and "Activated".
 
-<table>
-<tr>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-home.jpg?v=2" width="300" alt="App home page"/><br/><b>App home</b><br/>Switch status · Enabled apps · System info</td>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-about.jpg?v=2" width="300" alt="About page"/><br/><b>About</b><br/>Developer info · Check for updates</td>
-</tr>
-</table>
+![App home](/img/hyper-melolock/app-home.jpg)
+*App home: Switch status · Enabled apps · System info*
+
+![About](/img/hyper-melolock/app-about.jpg)
+*About: Developer info · Check for updates*
 
 ## 2. What You Can Customize
 
@@ -63,12 +62,11 @@ Every item on the Appearance page can be adjusted in real time; changes take eff
 - Player card: corner radius, top margin, background color (seven levels, including dynamic color extraction);
 - A line above the clock showing "Gregorian date + weekday + lunar date" and a custom signature, each togglable independently.
 
-<table>
-<tr>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-appearance.jpg" width="300" alt="Appearance groups"/><br/><b>Appearance groups</b><br/>Color · Date · Signature · Time · Cover · Player</td>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-appearance-picker.jpg" width="300" alt="Time color picker"/><br/><b>Time color</b><br/>Follow cover / Fixed · Style (M3E / Vivid)</td>
-</tr>
-</table>
+![Appearance groups](/img/hyper-melolock/app-appearance.jpg)
+*Appearance groups: Color · Date · Signature · Time · Cover · Player*
+
+![Time color](/img/hyper-melolock/app-appearance-picker.jpg)
+*Time color: Follow cover / Fixed · Style (M3E / Vivid)*
 
 ### Color extraction: let the lock screen follow the album
 

@@ -47,12 +47,11 @@ Hyper MeloLock 是一个开源免费的澎湃 OS 3 锁屏音乐模块：正在�
 
 成功标志：锁屏出现大号时间和全屏封面，底部有播放控制条；配置端首页显示系统版本与「已激活」。
 
-<table>
-<tr>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-home.jpg?v=2" width="300" alt="配置端首页"/><br/><b>配置端首页</b><br/>开关状态 · 已开启应用 · 系统信息</td>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-about.jpg?v=2" width="300" alt="关于页"/><br/><b>关于页</b><br/>开发者信息 · 检查更新</td>
-</tr>
-</table>
+![配置端首页](/img/hyper-melolock/app-home.jpg)
+*配置端首页：开关状态 · 已开启应用 · 系统信息*
+
+![关于页](/img/hyper-melolock/app-about.jpg)
+*关于页：开发者信息 · 检查更新*
 
 ## 二、外观可以调什么
 
@@ -63,12 +62,11 @@ Hyper MeloLock 是一个开源免费的澎湃 OS 3 锁屏音乐模块：正在�
 - 播放器卡片：圆角、上间距、底色（七档，含跟随封面动态取色）；
 - 时钟上方可加一行「公历 + 周几 + 农历」日期和自定义签名，各自独立开关。
 
-<table>
-<tr>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-appearance.jpg" width="300" alt="外观分组页"/><br/><b>外观分组</b><br/>取色 · 日期 · 签名 · 时间 · 封面 · 播放器</td>
-<td align="center" width="50%"><img src="/img/hyper-melolock/app-appearance-picker.jpg" width="300" alt="时间取色设置"/><br/><b>时间取色</b><br/>跟随封面 / 固定色 · 取色风格（M3E / 鲜艳原色）</td>
-</tr>
-</table>
+![外观分组](/img/hyper-melolock/app-appearance.jpg)
+*外观分组：取色 · 日期 · 签名 · 时间 · 封面 · 播放器*
+
+![时间取色](/img/hyper-melolock/app-appearance-picker.jpg)
+*时间取色：跟随封面 / 固定色 · 取色风格（M3E / 鲜艳原色）*
 
 ### 取色：让锁屏跟着专辑变色
 
