@@ -1,83 +1,111 @@
 ﻿---
-title: Hexo + Fluid 博客管理与自定义配置
+title: Hexo + Fluid Blog Management and Customization
 pubDate: 2026-09-04
 draft: false
-description: ""
+description: "Your blog is set up, but how do you change the title, add icons, or manage categories and tags? This post walks through the directory structure and common configuration of a Hexo + Fluid blog using the current site as an example."
 image: ""
 slugId: hexo-customize-guide
 category: 技术
 pinTop: 0
 ---
 
-## 前言
+## Introduction
 
-博客搭好了，但怎么改标题、加图标、管理分类标签？本文以当前博客为例，讲解 Hexo + Fluid 的目录结构和常用配置。
+Your blog is up and running, but how do you change the title, add icons, or manage categories and tags? Using the current blog as an example, this post explains the directory structure and common configuration of Hexo + Fluid.
 
-## 项目结构
+## 1. Command Cheat Sheet
+
+All commands below are run from the blog root directory.
+
+| Action | Command |
+|--------|---------|
+| Create a post | `hexo new "Post Title"` |
+| Create a standalone page | `hexo new page "Page Name"` |
+| Create a draft | `hexo new draft "Title"` |
+| Publish a draft | `hexo publish "Title"` |
+| Start local preview | `hexo server` |
+| Preview on a specific port | `hexo server -p 4001` |
+| Generate static files | `hexo generate` |
+| Generate and deploy | `hexo generate -d` |
+| Deploy only (generate first) | `hexo deploy` |
+| Clean cache and old files | `hexo clean` |
+| Force a full rebuild | `hexo generate -f` |
+| List all posts | `hexo list post` |
+| Check version | `hexo version` |
+
+After starting the local preview, visit `http://localhost:4000` and press `Ctrl+C` to stop.
+
+`hexo deploy` does not generate files automatically — you must run `hexo generate` first, then `hexo deploy`. `hexo generate -d` (short for `hexo g -d`) generates and deploys in one step, which is the command to use for daily posting.
+
+`hexo generate` is incremental by default — it only regenerates changed posts and the affected archives, category, and tag pages, so posting one or two articles is fast. The command that actually triggers a full rebuild is `hexo clean` — it deletes the `db.json` cache and `public/`, forcing the next generation to start from scratch. Only run `hexo clean` when switching themes, making major config changes, or after an upgrade produces abnormal output. Don't add it normally.
+
+The standard workflow for a post: `hexo new "Title"` to create → edit the corresponding md under `source/_posts/` → `hexo generate -d` to publish.
+
+## 2. Project Structure
 
 ```
 hexo/
-├── _config.yml           # Hexo 主配置
-├── _config.fluid.yml     # Fluid 主题配置
-├── package.json          # 依赖管理
+├── _config.yml           # Hexo main config
+├── _config.fluid.yml     # Fluid theme config
+├── package.json          # Dependency management
 ├── source/
-│   ├── _posts/           # 博客文章
-│   ├── images/           # 图片资源
-│   ├── about/            # 关于页
-│   ├── categories/       # 分类页
-│   ├── tags/             # 标签页
-│   └── links/            # 友链页
-└── themes/               # 主题目录
+│   ├── _posts/           # Blog posts
+│   ├── images/           # Image assets
+│   ├── about/            # About page
+│   ├── categories/       # Category page
+│   ├── tags/             # Tag page
+│   └── links/            # Friends page
+└── themes/               # Theme directory
 ```
 
-两个核心配置文件：
+Two core config files:
 
-| 文件 | 作用 |
-|------|------|
-| `_config.yml` | 站点名称、URL、作者、语言等全局设置 |
-| `_config.fluid.yml` | 导航栏、颜色、字体、页面布局等主题设置 |
+| File | Purpose |
+|------|---------|
+| `_config.yml` | Global settings: site name, URL, author, language, etc. |
+| `_config.fluid.yml` | Theme settings: navbar, colors, fonts, page layout, etc. |
 
-## 修改站点信息
+## 3. Modify Site Information
 
-编辑根目录 `_config.yml`：
+Edit `_config.yml` in the root directory:
 
 ```yaml
 # Site
-title: zuige blog              # 站点标题（浏览器标签页显示）
-subtitle: '落魄谷中寒风吹，春秋蝉鸣少年归。'  # 首页副标题
-description: 'A blog about technology and life'  # 站点描述（SEO）
-author: zuige66                # 作者名
-language: zh-CN                # 语言
+title: zuige blog              # Site title (shown in browser tab)
+subtitle: '落魄谷中寒风吹，春秋蝉鸣少年归。'  # Homepage subtitle
+description: 'A blog about technology and life'  # Site description (SEO)
+author: zuige66                # Author name
+language: zh-CN                # Language
 ```
 
-修改后执行 `hexo clean && hexo deploy` 生效。
+Run `hexo clean && hexo deploy` for changes to take effect.
 
-## 首页配置
+## 4. Homepage Configuration
 
-编辑 `_config.fluid.yml` 的 `index` 部分：
+Edit the `index` section of `_config.fluid.yml`:
 
 ```yaml
 index:
-  banner_img: /img/default.png     # 首页大图
-  banner_img_height: 100           # 图片高度（屏幕百分比）
-  banner_mask_alpha: 0.3           # 蒙版透明度
+  banner_img: /img/default.png     # Homepage banner image
+  banner_img_height: 100           # Image height (percentage of screen)
+  banner_mask_alpha: 0.3           # Mask transparency
 
   slogan:
     enable: true
-    text: "落魄谷中寒风吹，春秋蝉鸣少年归。"  # 首页副标题文字
+    text: "落魄谷中寒风吹，春秋蝉鸣少年归。"  # Homepage subtitle text
 
   auto_excerpt:
-    enable: true                   # 首页自动截取摘要
+    enable: true                   # Auto-extract excerpt on homepage
 
   post_meta:
-    date: true                     # 显示发布日期
-    category: true                 # 显示分类
-    tag: true                      # 显示标签
+    date: true                     # Show publish date
+    category: true                 # Show category
+    tag: true                      # Show tags
 ```
 
-## 添加 GitHub 图标到首页
+## 5. Add a GitHub Icon
 
-在 `_config.fluid.yml` 的 `about` 部分配置关于页的社交图标：
+Configure the social icons for the about page in the `about` section of `_config.fluid.yml`:
 
 ```yaml
 about:
@@ -90,7 +118,7 @@ about:
     - { class: "iconfont icon-email-fill", link: "mailto:your@email.com", tip: "Email" }
 ```
 
-如果想在导航栏也显示 GitHub 图标，修改 `navbar` 部分：
+If you also want a GitHub icon in the navbar, edit the `navbar` section:
 
 ```yaml
 navbar:
@@ -103,11 +131,11 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
 ```
 
-## 管理分类
+## 6. Manage Categories
 
-### 创建分类页
+### Create the category page
 
-`source/categories/index.md` 已存在，内容为：
+`source/categories/index.md` already exists with the following content:
 
 ```markdown
 ---
@@ -117,38 +145,38 @@ type: categories
 ---
 ```
 
-### 给文章添加分类
+### Add a category to a post
 
-在文章的 front-matter 中指定：
+Specify it in the post's front-matter:
 
 ```yaml
 ---
-title: 我的文章
+title: My Post
 categories:
   - 技术
   - 前端
 ---
 ```
 
-一个文章可以属于多个分类。如果分类不存在，Hexo 会自动创建。
+A post can belong to multiple categories. If a category does not exist, Hexo creates it automatically.
 
-### 分类页配置
+### Category page configuration
 
 ```yaml
 category:
   enable: true
   banner_img: /img/default.png
   banner_img_height: 60
-  order_by: "-length"          # 按文章数倒序
-  collapse_depth: 0            # 折叠深度，0 为全部折叠
-  post_limit: 10               # 单个分类最多显示文章数
+  order_by: "-length"          # Sort by post count, descending
+  collapse_depth: 0            # Collapse depth, 0 = collapse all
+  post_limit: 10               # Max posts shown per category
 ```
 
-## 管理标签
+## 7. Manage Tags
 
-### 创建标签页
+### Create the tag page
 
-`source/tags/index.md` 内容为：
+`source/tags/index.md` contains:
 
 ```markdown
 ---
@@ -158,11 +186,11 @@ type: tags
 ---
 ```
 
-### 给文章添加标签
+### Add tags to a post
 
 ```yaml
 ---
-title: 我的文章
+title: My Post
 tags:
   - Hexo
   - Markdown
@@ -170,54 +198,54 @@ tags:
 ---
 ```
 
-### 标签云配置
+### Tag cloud configuration
 
 ```yaml
 tag:
   enable: true
   banner_img_height: 80
   tagcloud:
-    min_font: 15         # 最小字号
-    max_font: 30         # 最大字号
+    min_font: 15         # Minimum font size
+    max_font: 30         # Maximum font size
     unit: px
-    start_color: "#BBBBEE"  # 起始颜色
-    end_color: "#337ab7"    # 结束颜色
+    start_color: "#BBBBEE"  # Start color
+    end_color: "#337ab7"    # End color
 ```
 
-## 写新文章
+## 8. Write a New Post
 
 ```bash
-hexo new "文章标题"
+hexo new "Post Title"
 ```
 
-在 `source/_posts/` 下生成 `文章标题.md`，编辑后部署：
+This generates `Post Title.md` under `source/_posts/`. After editing, generate and deploy with one command:
 
 ```bash
-hexo clean && hexo deploy
+hexo generate -d
 ```
 
-文章 front-matter 完整示例：
+Complete post front-matter example:
 
 ```yaml
 ---
-title: 文章标题
+title: Post Title
 date: 2026-09-04
 tags:
-  - 标签1
-  - 标签2
+  - Tag1
+  - Tag2
 categories:
-  - 分类1
-index_img: /images/cover.jpg    # 首页封面图（可选）
-banner_img: /images/banner.jpg  # 文章页大图（可选）
-math: true                      # 启用数学公式（可选）
+  - Category1
+index_img: /images/cover.jpg    # Homepage cover image (optional)
+banner_img: /images/banner.jpg  # Post page banner (optional)
+math: true                      # Enable math formulas (optional)
 ---
 
-正文内容...
+Body content...
 ```
 
-## 关于页
+## 9. About Page
 
-编辑 `source/about/index.md`：
+Edit `source/about/index.md`:
 
 ```markdown
 ---
@@ -227,73 +255,74 @@ date: 2026-09-03
 
 ## Hi there!
 
-这里写你的个人介绍。
+Write your personal introduction here.
 
-### 联系方式
+### Contact
 
 - GitHub: [zuige66](https://github.com/zuige66)
 - Email: your@email.com
 ```
 
-## 自定义样式
+## 10. Custom Styles
 
-如需修改颜色、字体等细节，可创建自定义 CSS 文件。
+To tweak colors, fonts, and other details, create a custom CSS file.
 
-在 `_config.fluid.yml` 中指定：
+Specify it in `_config.fluid.yml`:
 
 ```yaml
 custom_css:
   - /css/custom.css
 ```
 
-然后在 `source/css/custom.css` 中编写样式：
+Then write your styles in `source/css/custom.css`:
 
 ```css
-/* 修改文章标题颜色 */
+/* Change post title color */
 .post-title a {
   color: #2c3e50;
 }
 
-/* 修改正文行高 */
+/* Change body line height */
 .post-body {
   line-height: 2;
 }
 ```
 
-## 颜色主题
+## 11. Color Theme
 
 ```yaml
 color:
-  body_bg_color: "#f5f5f5"       # 页面背景
-  navbar_bg_color: "#2f4154"     # 导航栏背景
-  navbar_text_color: "#fff"      # 导航栏文字
-  text_color: "#3c4858"          # 正文文字
-  post_text_color: "#2c3e50"     # 文章文字
-  post_heading_color: "#1a202c"  # 文章标题
-  post_link_color: "#0366d6"     # 文章链接
-  link_hover_color: "#30a9de"    # 链接悬浮
-  board_color: "#fff"            # 卡片背景
+  body_bg_color: "#f5f5f5"       # Page background
+  navbar_bg_color: "#2f4154"     # Navbar background
+  navbar_text_color: "#fff"      # Navbar text
+  text_color: "#3c4858"          # Body text
+  post_text_color: "#2c3e50"     # Post text
+  post_heading_color: "#1a202c"  # Post headings
+  post_link_color: "#0366d6"     # Post links
+  link_hover_color: "#30a9de"    # Link hover
+  board_color: "#fff"            # Card background
 ```
 
-## 常用操作速查
+## 12. Common Config Cheat Sheet
 
-| 需求 | 操作 |
-|------|------|
-| 改站点标题 | `_config.yml` → `title` |
-| 改首页副标题 | `_config.fluid.yml` → `index.slogan.text` |
-| 加 GitHub 图标 | `_config.fluid.yml` → `about.icons` |
-| 加新分类 | 文章 front-matter 里加 `categories` |
-| 加新标签 | 文章 front-matter 里加 `tags` |
-| 改导航栏 | `_config.fluid.yml` → `navbar.menu` |
-| 改颜色 | `_config.fluid.yml` → `color` |
-| 改字体 | `_config.fluid.yml` → `font` |
-| 写新文章 | `hexo new "标题"` → 编辑 md → `hexo deploy` |
+| Need | Action |
+|------|--------|
+| Change site title | `_config.yml` → `title` |
+| Change homepage subtitle | `_config.fluid.yml` → `index.slogan.text` |
+| Add GitHub icon | `_config.fluid.yml` → `about.icons` |
+| Add a new category | Add `categories` in post front-matter |
+| Add a new tag | Add `tags` in post front-matter |
+| Change navbar | `_config.fluid.yml` → `navbar.menu` |
+| Change colors | `_config.fluid.yml` → `color` |
+| Change fonts | `_config.fluid.yml` → `font` |
+| Change hover, float, and search highlight effects | `source/css/site-motion.css` |
+| Change in-site search positioning | `themes/fluid/source/js/local-search.js` and `source/js/site-interactions.js` |
 
-## 总结
+## Summary
 
-核心就两个文件：
+It comes down to two files:
 
-1. `_config.yml` 管全局设置
-2. `_config.fluid.yml` 管主题样式
+- `_config.yml` handles global settings
+- `_config.fluid.yml` handles theme styling
 
-改完配置执行 `hexo clean && hexo deploy` 即可生效。
+After editing the config, run `hexo clean && hexo deploy` for changes to take effect. For daily commands, see "1. Command Cheat Sheet" at the top.

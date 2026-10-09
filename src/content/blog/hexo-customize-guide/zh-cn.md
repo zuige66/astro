@@ -2,7 +2,7 @@
 title: Hexo + Fluid 博客管理与自定义配置
 pubDate: 2026-09-04
 draft: false
-description: ""
+description: "博客搭好了，但怎么改标题、加图标、管理分类标签？本文以当前博客为例，讲解 Hexo + Fluid 的目录结构和常用配置。"
 image: ""
 slugId: hexo-customize-guide
 category: 技术
@@ -13,7 +13,35 @@ pinTop: 0
 
 博客搭好了，但怎么改标题、加图标、管理分类标签？本文以当前博客为例，讲解 Hexo + Fluid 的目录结构和常用配置。
 
-## 项目结构
+## 一、常用命令速查
+
+以下命令都在博客根目录下执行。
+
+| 作用 | 命令 |
+|------|------|
+| 新建文章 | `hexo new "文章标题"` |
+| 新建独立页面 | `hexo new page "页面名"` |
+| 新建草稿 | `hexo new draft "标题"` |
+| 发布草稿 | `hexo publish "标题"` |
+| 启动本地预览 | `hexo server` |
+| 指定端口预览 | `hexo server -p 4001` |
+| 生成静态文件 | `hexo generate` |
+| 生成并部署 | `hexo generate -d` |
+| 仅部署（需先生成） | `hexo deploy` |
+| 清理缓存和旧文件 | `hexo clean` |
+| 强制全量重建 | `hexo generate -f` |
+| 列出所有文章 | `hexo list post` |
+| 查看版本 | `hexo version` |
+
+本地预览启动后访问 `http://localhost:4000`，按 `Ctrl+C` 停止。
+
+`hexo deploy` 不会自动生成文件，必须先 `hexo generate` 再 `hexo deploy`；`hexo generate -d`（可简写 `hexo g -d`）一步完成生成加部署，日常发帖用这条即可。
+
+`hexo generate` 默认增量构建，只重新生成改动过的文章以及受影响的归档、分类、标签页，日常发一两篇不会慢。真正会触发全量重建的是 `hexo clean`——它删除缓存 `db.json` 和 `public/`，下次生成只能从头来。只在换主题、大改配置或升级后输出异常时才跑 `hexo clean`，平时不要加。
+
+写完一篇文章的标准流程：`hexo new "标题"` 新建 → 编辑 `source/_posts/` 下对应的 md → `hexo generate -d` 发布。
+
+## 二、项目结构
 
 ```
 hexo/
@@ -37,7 +65,7 @@ hexo/
 | `_config.yml` | 站点名称、URL、作者、语言等全局设置 |
 | `_config.fluid.yml` | 导航栏、颜色、字体、页面布局等主题设置 |
 
-## 修改站点信息
+## 三、修改站点信息
 
 编辑根目录 `_config.yml`：
 
@@ -52,7 +80,7 @@ language: zh-CN                # 语言
 
 修改后执行 `hexo clean && hexo deploy` 生效。
 
-## 首页配置
+## 四、首页配置
 
 编辑 `_config.fluid.yml` 的 `index` 部分：
 
@@ -75,7 +103,7 @@ index:
     tag: true                      # 显示标签
 ```
 
-## 添加 GitHub 图标到首页
+## 五、添加 GitHub 图标
 
 在 `_config.fluid.yml` 的 `about` 部分配置关于页的社交图标：
 
@@ -103,7 +131,7 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
 ```
 
-## 管理分类
+## 六、管理分类
 
 ### 创建分类页
 
@@ -144,7 +172,7 @@ category:
   post_limit: 10               # 单个分类最多显示文章数
 ```
 
-## 管理标签
+## 七、管理标签
 
 ### 创建标签页
 
@@ -184,16 +212,16 @@ tag:
     end_color: "#337ab7"    # 结束颜色
 ```
 
-## 写新文章
+## 八、写新文章
 
 ```bash
 hexo new "文章标题"
 ```
 
-在 `source/_posts/` 下生成 `文章标题.md`，编辑后部署：
+在 `source/_posts/` 下生成 `文章标题.md`，编辑后用一条命令生成并部署：
 
 ```bash
-hexo clean && hexo deploy
+hexo generate -d
 ```
 
 文章 front-matter 完整示例：
@@ -215,7 +243,7 @@ math: true                      # 启用数学公式（可选）
 正文内容...
 ```
 
-## 关于页
+## 九、关于页
 
 编辑 `source/about/index.md`：
 
@@ -227,7 +255,7 @@ date: 2026-09-03
 
 ## Hi there!
 
-这里写你的个人介绍。
+这里写个人介绍。
 
 ### 联系方式
 
@@ -235,7 +263,7 @@ date: 2026-09-03
 - Email: your@email.com
 ```
 
-## 自定义样式
+## 十、自定义样式
 
 如需修改颜色、字体等细节，可创建自定义 CSS 文件。
 
@@ -260,7 +288,7 @@ custom_css:
 }
 ```
 
-## 颜色主题
+## 十一、颜色主题
 
 ```yaml
 color:
@@ -275,7 +303,7 @@ color:
   board_color: "#fff"            # 卡片背景
 ```
 
-## 常用操作速查
+## 十二、常用配置速查
 
 | 需求 | 操作 |
 |------|------|
@@ -287,13 +315,14 @@ color:
 | 改导航栏 | `_config.fluid.yml` → `navbar.menu` |
 | 改颜色 | `_config.fluid.yml` → `color` |
 | 改字体 | `_config.fluid.yml` → `font` |
-| 写新文章 | `hexo new "标题"` → 编辑 md → `hexo deploy` |
+| 改悬停、浮起与搜索高亮动效 | `source/css/site-motion.css` |
+| 改站内搜索定位效果 | `themes/fluid/source/js/local-search.js` 与 `source/js/site-interactions.js` |
 
 ## 总结
 
 核心就两个文件：
 
-1. `_config.yml` 管全局设置
-2. `_config.fluid.yml` 管主题样式
+- `_config.yml` 管全局设置
+- `_config.fluid.yml` 管主题样式
 
-改完配置执行 `hexo clean && hexo deploy` 即可生效。
+改完配置执行 `hexo clean && hexo deploy` 即可生效。日常命令见开头「一、常用命令速查」。
